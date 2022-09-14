@@ -53,6 +53,21 @@ Event flow:
 11. The server adds the order to the queue
 12. The customer's current order is cleared
 
+## Customer Saves an Order
+Entry conditions:
+1. Customer has signed in
+2. Customer has placed an order previously
+
+Exit conditions:
+1. Customer saves or exits the add to favorites popup
+
+Event flow:
+1. Customer views their account details
+2. Server displays details, along with a list of recently ordered items
+3. Customer selects an item, then clicks add to favorites
+4. Customer enters a name for the item, then clicks save
+5. Server adds order with name to customer database
+
 ## Employee Makes an Order
 Entry conditions:
 1. Employee has signed in
@@ -81,3 +96,47 @@ Event flow:
 3. Employee clicks "mark as complete"
 4. Server removes order from the list
 5. Server updates the transaction history of the customer to show that the order was picked up
+
+## Manager Pays Employees
+Entry conditions:
+1. Manager has signed in
+
+Exit conditions:
+1. Manager clicks pay employees
+
+Event flow:
+1. Manager opens employee view
+2. Server displays all employees and the hours they worked
+3. Manager clicks pay employees
+4. Server removes money from the store account and adds money to each employee account
+5. Each employee's hours worked field is reset to 0 
+
+## Manager Orders Inventory
+Entry conditions:
+1. Manager has signed in
+2. Manager needs more inventory
+
+Exit conditions:
+1. Manager clicks the order button or the cancel button
+
+Event flow:
+1. Manager clicks on view inventory
+2. Server displays a list of all current inventory, with an empty field next to each
+3. Manager enters the number to order of each ingredient, then clicks order
+4. Server subtracts money from manager's account, and adds selected items to the inventory database
+
+## User Edits Profile
+Entry conditions:
+1. User has signed in
+
+Exit conditions:
+1. User clicks the save button or the cancel button
+
+Event flow:
+1. User views their account details
+2. Server displays account info
+3. User clicks edit account button
+4. Server loads a form with the account information
+5. User edits the form and clicks submit
+6. Server updates database information
+7. User is redirected to the account details page
