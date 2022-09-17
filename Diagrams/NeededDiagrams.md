@@ -5,11 +5,11 @@ Diagrams are needed for the following use cases:
 2. Customer places an order X
 3. Customer adds order to favorites X
 4. User edits account details X
-5. Employees handle an order
+5. Employees handle an order 
     * Make Order
-    * Give to customer
+    * Give to customer X
 6. Manager orders inventory X
-7. Manager pays employees
+7. Manager pays employees X
 
 
 # Use Case Diagrams
