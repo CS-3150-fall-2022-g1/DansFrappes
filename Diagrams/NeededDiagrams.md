@@ -2,9 +2,9 @@
 
 Diagrams are needed for the following use cases:
 1. Customer makes an account
-2. Customer places an order X
-3. Customer adds order to favorites X
-4. User edits account details X
+2. Customer places an order
+3. Customer adds order to favorites
+4. User edits account details
 5. Employees handle an order
     * Make
     * Give to customer
