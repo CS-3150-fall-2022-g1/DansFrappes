@@ -3,6 +3,35 @@
 ## Welcome
 This is Dan's Frappuccinos README.md file where you can learn all about how our system is configured, implemented, tested, and maintained. This website serve's as an all access club to order your favorite frapuccino.
 
+## Deliverables
+---
+### MILESTONE 2
+README.md -> /
+
+Project plan -> /docs/
+
+Requirements Definition -> /docs/
+
+Use Case Diagrams -> /docs/Diagrams/UseCase
+
+Class Diagram -> /docs/Diagrams/classDiagrams
+
+Activity Diagrams /docs/Diagrams/activityDiagrams
+
+Prototypes -> /docs/Prototypes
+
+---
+### MILESTONE 1
+
+Project Plan -> /docs/
+
+Use Case Diagrams -> /docs/Diagrams/UseCase
+
+Requirements Definition -> /docs/
+
+README.md -> /
+
+
 ## Configuration
 Our system will contain several different webpages that allow for employee hour input, a wage tracker, a payout system controlled by the manager who will also act as an admin for the site. Employees will have special access to be able to take orders, submit hours, and give orders to customers.
 
