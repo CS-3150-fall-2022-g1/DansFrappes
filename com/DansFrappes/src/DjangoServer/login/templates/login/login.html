@@ -11,6 +11,17 @@
 
 	<body>
 		<script src="{% static 'login/header.js' %}"></script>
+		<form method="post" action="">{% csrf_token %}
+			<input type="text" id="username" name="username">
+			<input type="password" id="password" name="password">
+			<input type="submit" id="loginbutton"></input>
+		</form>
+		{% if validLogin == True %}
+		<p hidden id="invalidLoginText">hidden</p>
+		{% else %}
+		<p id="invalidLoginText">Not Hidden</p>
+		{% endif %}
 		<script src="{% static 'login/script.js' %}"></script>
+		
 	</body>
 </html>
