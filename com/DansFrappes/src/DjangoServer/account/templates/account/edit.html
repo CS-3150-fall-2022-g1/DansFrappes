@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <h1>Edit Account Info</h1>
+    <div>
+        <form method="POST", action="">
+        <p>First name: <input type="text" title="First name" value="{{ first_name }}"></p>
+        <p>Last name: <input type="text" title="Last name" value="{{ last_name }}"></p>
+        <p>Email: <input type="email" title="Email" value="{{ email }}"></p>
+        <p>Birthday: <input type="date">{{ birthday }}</p>
+        <button type="submit">Save</button>
+    </div>
+</body>

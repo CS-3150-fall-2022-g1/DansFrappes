@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+</head>
+<body>
+    <h1>Account Summary</h1>
+    <div>
+        <h2>Personal Info</h2>
+        <p>Name: {{ name }}</p>
+        <p>Email: {{ email }}</p>
+        <p>Birthday: {{ birthday }}</p>
+        <button>Edit</button>
+    </div>
+    <div>
+        <h2>Payment</h2>
+        <p>Current Balance: ${{ funds }}</p>
+        <button>Add Funds</button>
+    </div>
+    <div>
+        <h2>Order History</h2>
+        {% for order in order_history %}
+        <div>
+            <img src="{{ order.image }}"/>
+            <span>{{ order.total }}</span>
+            <span>{{ order.date }}</span>
+            <button>Save Item</button>
+        </div>
+        {% endfor %}
+    </div>
+</body>
