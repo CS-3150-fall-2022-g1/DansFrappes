@@ -25,3 +25,8 @@ button.setAttribute('type','button')
 button.setAttribute('value', "Login");
 button.id = 'button';
 loginDiv.appendChild(button);
+
+
+const createAccountText = document.createElement("p");
+createAccountText.innerHTML = "New here? Let's get <a href=\"/login/createaccount\"> started!</a>";
+loginDiv.appendChild(createAccountText);

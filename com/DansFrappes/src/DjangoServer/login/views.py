@@ -4,4 +4,8 @@ from django.template import loader
 def index(request):
   template = loader.get_template('login/login.html')
   return HttpResponse(template.render())
+
+def createaccount(request):
+  template = loader.get_template('login/create.html')
+  return HttpResponse(template.render())
 # Create your views here.
