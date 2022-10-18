@@ -2,6 +2,7 @@ document.title = "Dan's Frapp's - Login";
 
 const loginDiv = document.createElement("div");
 loginDiv.id = "loginDiv";
+loginDiv.className="textEntryDiv"
 document.body.appendChild(loginDiv);
 
 const loginIntro = document.createElement('H1');
@@ -29,6 +30,7 @@ const button = document.getElementById('loginbutton');
 button.setAttribute('type','submit')
 button.setAttribute('value', "Login");
 button.id = 'loginbutton';
+button.className = "submitbutton";
 form.appendChild(button);
 
 const warningText = document.getElementById("invalidLoginText");
