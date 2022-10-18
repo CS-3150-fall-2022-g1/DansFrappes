@@ -1,0 +1,24 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Login - Dan's Frappes</title>
+		<meta charset="utf-8">
+		<!-- <link href="{% static 'gold/style.css' %}" rel="stylesheet"> -->
+	</head>
+
+	<body>
+		<div>
+			<h1>Login</h1>
+			<form method="post" action="">{% csrf_token %}
+				<p><input type="text" name="email" placeholder="email"></p>
+				<p><input type="password" name="password" placeholder="password"></p>
+				<p><button type="submit">Submit</button></p>
+			</form>
+			<a href="{% url 'create' %}">Create Account</a>
+		</div>
+		<script src="{% static 'account/script.js' %}"></script>
+	</body>
+</html>

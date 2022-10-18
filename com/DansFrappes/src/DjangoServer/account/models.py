@@ -1,14 +1,17 @@
+from email.policy import default
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group
 
 # Create your models here.
 class UserAccount(AbstractUser):
     #Add custom fields here
+    
+    birthday = models.DateField(default=None, blank=True, null=True)
+    funds = models.DecimalField(max_digits=6,decimal_places=2,default=0)
 
-
-    def setUserCustomer(self, request):
+    def setCustomer(self, request):
         """
-        Remove this user from groups
+        Remove this user from groups. This is only needed when removing permissions from an employee.
         """
         self.groups.clear()
         return self
