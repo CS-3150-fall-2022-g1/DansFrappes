@@ -1,0 +1,61 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>TODO: change this title with JavaScript</title>
+		<meta charset="utf-8">
+		<link href="{% static 'login/style.css' %}" rel="stylesheet">
+	</head>
+
+	<body>
+		<script src="{% static 'login/header.js' %}"></script>
+		<form method="post" action="" id="createform">{% csrf_token %}
+			<input type="text" id="firstname" name="firstname">
+			{% if missingFN == True %}
+			<p id="fnerr">First Name Field must not be empty</p>
+			{% else %}
+			<p hidden id="fnerr"></p>
+			{% endif %}
+
+			<input type="text" id="lastname" name="lastname">
+			{% if missingLN == True %}
+			<p id="lnerr">Last Name Field must not be empty</p>
+			{% else %}
+			<p hidden id="lnerr"></p>
+			{% endif %}
+
+			<input type="text" id="username" name="username">
+			{% if missingUN == True %}
+			<p id="unerr">Username Field must not be empty</p>
+			{% else %}
+			<p hidden id="unerr"></p>
+			{% endif %}
+
+			<input type="text" id="email" name="email">
+			{% if missingEM == True %}
+			<p id="emerr">Email Field must not be empty</p>
+			{% else %}
+			<p hidden id="emerr"></p>
+			{% endif %}
+
+			<input type="password" id="password" name="password">
+			{% if missingpsw == True %}
+			<p id="pwderr">Password Field must not be empty</p>
+			{% else %}
+			<p hidden id="pwderr"></p>
+			{% endif %}
+
+			<input type="password" id="confirmpassword" name="confirmpassword">
+			{% if matchpsswd == False %}
+			<p id="cpwderr">Confirm Password Field must match Password</p>
+			{% else %}
+			<p hidden id="cpwderr"></p>
+			{% endif %}
+
+			<input type="submit" id="createaccountbutton"></input>
+		</form>
+		<script src="{% static 'login/create.js' %}"></script>
+	</body>
+</html>
