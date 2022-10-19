@@ -4,7 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
 
-from django.contrib.auth.models import User
+from account.models import UserAccount
+
 
 def index(request):
     return redirect('/account/view',permanent=True)
@@ -30,7 +31,7 @@ def user_logout(request):
     return redirect("/account/login")
 
 @csrf_exempt
-def login(request):
+def login_screen(request):
   context= {
         'validLogin': True,
         }
@@ -88,7 +89,7 @@ def createaccount(request):
     # method signature is create_user(username, email, password)
     # using email as username for now
     if valid:
-      user = User.objects.create_user(username, email, password)
+      user = UserAccount.objects.create_user(username, email, password)
 
       # user is already saved to the database at this point
 
