@@ -38,6 +38,6 @@ warningText.innerHTML = "Incorrect Username and/or Password."
 loginDiv.appendChild(warningText);
 
 const createAccountText = document.createElement("p");
-createAccountText.innerHTML = "New here? Let's get <a href=\"/login/createaccount\"> started!</a>";
+createAccountText.innerHTML = "New here? Let's get <a href=\"/account/createaccount\"> started!</a>";
 loginDiv.appendChild(createAccountText);
 
