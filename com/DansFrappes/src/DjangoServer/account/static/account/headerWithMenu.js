@@ -4,7 +4,7 @@ header.id = "headerDiv";
 document.body.appendChild(header);
 
 var h1_1 = document.createElement("h1");
-h1_1.innerHTML = "Dan's Frapps";
+h1_1.innerHTML = "Account";
 header.appendChild(h1_1);
 
 var useraccountimage = new Image(35, 35);;
