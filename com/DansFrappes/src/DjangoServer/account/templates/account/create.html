@@ -6,11 +6,11 @@
 	<head>
 		<title>TODO: change this title with JavaScript</title>
 		<meta charset="utf-8">
-		<link href="{% static 'login/style.css' %}" rel="stylesheet">
+		<link href="{% static 'account/style.css' %}" rel="stylesheet">
 	</head>
 
 	<body>
-		<script src="{% static 'login/header.js' %}"></script>
+		<script src="{% static 'account/header.js' %}"></script>
 		<form method="post" action="" id="createform">{% csrf_token %}
 			<input type="text" id="firstname" name="firstname">
 			{% if missingFN == True %}
@@ -56,6 +56,6 @@
 
 			<input type="submit" id="createaccountbutton"></input>
 		</form>
-		<script src="{% static 'login/create.js' %}"></script>
+		<script src="{% static 'account/create.js' %}"></script>
 	</body>
 </html>
