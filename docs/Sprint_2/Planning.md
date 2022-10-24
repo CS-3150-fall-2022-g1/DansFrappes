@@ -1,6 +1,6 @@
 # Phase 3 Sprint 2 Planning
 1. Sprint Goal
-    * Allow customers to
+    * Allow customers to place orders, and start order fulfillment
 
 2. Leftover sprint tasks
     * Make front-end for menu / ordering
