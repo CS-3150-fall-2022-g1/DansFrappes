@@ -10,8 +10,8 @@ html, body {
     background: #0A2136;
     color: white;
     font-size: 30px;
-    position:fixed;
-    top:0;
+    position:sticky;
+    top:0px;
     width: 100%;
     height: 150px;
   }
@@ -20,11 +20,18 @@ html, body {
     height: 10px;
     text-align: center;
     background: #8F8F8F;
-    position:fixed;
+    position:sticky;
     width:100%;
     top:150px;
   }
-
+  
+  #mainDiv {
+    height: auto;
+    width: 100%;
+    background: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 15px;
+  }
 
 .textEntryDiv {
     text-align: center;
