@@ -1,6 +1,7 @@
 from email.policy import default
 from django.db import models
 from django.contrib.auth.models import AbstractUser, Group
+from menu.utils import get_empty_order
 
 # Create your models here.
 class UserAccount(AbstractUser):
@@ -8,6 +9,7 @@ class UserAccount(AbstractUser):
     
     birthday = models.DateField(default=None, blank=True, null=True)
     funds = models.DecimalField(max_digits=6,decimal_places=2,default=0)
+    cart = models.JSONField(default=get_empty_order)
 
     def setCustomer(self, request):
         """

@@ -5,7 +5,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
 
 from account.models import UserAccount
-
+from account.utils import create_account
 
 def index(request):
     return redirect('/account/view',permanent=True)
@@ -89,12 +89,8 @@ def createaccount(request):
     # method signature is create_user(username, email, password)
     # using email as username for now
     if valid:
-      user = UserAccount.objects.create_user(username, email, password)
+      user = create_account(email, first_name, last_name, password) # Helper method to create a user with the new UserAccount model
 
-      # user is already saved to the database at this point
-
-      user.first_name = first_name
-      user.last_name = last_name
       user.save()
       login(request, user)
       return redirect("/menu/")
