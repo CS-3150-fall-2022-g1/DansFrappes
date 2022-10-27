@@ -10,8 +10,9 @@ header.appendChild(h1_1);
 var useraccountimage = new Image(35, 35);;
 useraccountimage.src = "/static/menu/userAccountIcon.png"
 useraccountimage.id = "uaimg";
-useraccountimage.style.position="absolute";
-useraccountimage.style.left = "90%";
+useraccountimage.style.position = "absolute";
+useraccountimage.style.left = "95%";
+useraccountimage.style.bottom = "5%";
 useraccountimage.onclick = function() {
     window.location.href = '/account/view';
 };
@@ -21,7 +22,8 @@ var menuicon = new Image(35, 35);;
 menuicon.src = "/static/menu/menuIcon.png"
 menuicon.id = "menuimg";
 menuicon.style.position = "absolute";
-menuicon.style.left="2%";
+menuicon.style.left = "2%";
+menuicon.style.bottom = "5%";
 menuicon.onclick = function() {
     alert("TODO: Implement Menu");
 };
@@ -31,7 +33,8 @@ var homeicon = new Image(35, 35);;
 homeicon.src = "/static/menu/homeIcon.png"
 homeicon.id = "menuimg";
 homeicon.style.position = "absolute";
-homeicon.style.left = "95%";
+homeicon.style.left = "90%";
+homeicon.style.bottom = "5%";
 homeicon.onclick = function() {
     window.location.href = '/menu';
 };
