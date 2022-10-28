@@ -1,3 +1,6 @@
+from decimal import Decimal
+from turtle import update
+from unicodedata import decimal
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -5,27 +8,42 @@ from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
 
 from account.models import UserAccount
-from account.utils import create_account
+from account.utils import create_account, update_account_data, add_funds
 
 def index(request):
     return redirect('/account/view',permanent=True)
 
+@csrf_exempt
 @login_required
 def view(request):
-    name = request.user.first_name + " " + request.user.last_name
+    firstname = request.user.first_name
+    lastname =  request.user.last_name
     email = request.user.email
     birthday = request.user.birthday
     funds = request.user.funds
 
-    return render(request, "account/view.html", {'name':name, 'email':email, 'birthday': birthday, 'funds':funds})
+    return render(request, "account/view.html", {'firstname':firstname, 'lastname':lastname, 'email':email, 'birthday': birthday, 'funds':funds})
 
+@csrf_exempt
+@login_required
+def funds(request):
+  if request.method == 'POST':
+    amount =  Decimal(float(request.POST.get('amount')))
+    print(amount)
+    add_funds(request.user, amount)
+    return redirect("/account/view/")
+  return view(request)
+
+@csrf_exempt
 @login_required
 def edit(request):
     if request.method == 'POST':
-        return
+      update_account_data(request.user, request.POST.get('email'), request.POST.get('firstname'), request.POST.get('lastname'), request.POST.get('birthday'))
+      return redirect("/account/view/")
 
-    return HttpResponse("Edit Account")
+    return view(request)
 
+@csrf_exempt
 def user_logout(request):
     logout(request)
     return redirect("/account/login")
