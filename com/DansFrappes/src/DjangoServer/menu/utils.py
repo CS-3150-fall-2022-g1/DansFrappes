@@ -20,5 +20,9 @@ def add_item_to_cart(user, item):
     user.cart['items'].append(item)
     user.save()
 
+def add_topping():
+    #TODO - we need a function to add toppings
+    pass
+
 def get_empty_order():
     return {'items':[]}
