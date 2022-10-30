@@ -4,10 +4,13 @@ from django.shortcuts import render, redirect
 
 
 def inventory(request):
-    return render(request, 'employee/inventory.html')
+    page_title = 'Inventory'
+    return render(request, 'employee/inventory.html', {'page_title': page_title})
 
 def queue(request):
-    return render(request, 'employee/queue.html')
+    page_title = 'Order Queue'
+    return render(request, 'employee/queue.html', {'page_title': page_title})
 
-def staff(request):
-    return render(request, 'employee/staff.html')
+def employee(request):
+    page_title = 'Employees'
+    return render(request, 'employee/employee.html', {'page_title': page_title})
