@@ -8,28 +8,50 @@
 </head>
 <body>
     <script src="{% static 'account/headerWithMenu.js' %}"></script>
-    <h1>Account Summary</h1>
-    <div>
-        <h2>Personal Info</h2>
-        <p>Name: {{ name }}</p>
-        <p>Email: {{ email }}</p>
-        <p>Birthday: {{ birthday }}</p>
-        <button>Edit</button>
+    <div class="left-column">
+            <div class="accountholder">
+                <h2 id="h2-acc-bal">Account Balance</h2>
+                <p id="balance">${{ funds }}</p>
+                <p id="ch-bal-p">Change Balance</p>
+                <form method="post" action="/account/addfunds/">
+                    <input type="number" value="0.00" onchange="setTwoNumberDecimal(this)" id="change-balance" step=".01" name="amount" id="amount"></input>
+                    <input type="submit" class="submitbutton" value="Add" id="add-funds-button"></input>
+                </form>
+                
+            
+                <h2>Order History</h2>
+                {% for order in order_history %}
+                <div>
+                    <img src="{{ order.image }}"/>
+                    <span>{{ order.total }}</span>
+                    <span>{{ order.date }}</span>
+                    <button>Save Item</button>
+                </div>
+                {% endfor %}
+            </div>
+            
+        
+       
     </div>
-    <div>
-        <h2>Payment</h2>
-        <p>Current Balance: ${{ funds }}</p>
-        <button>Add Funds</button>
-    </div>
-    <div>
-        <h2>Order History</h2>
-        {% for order in order_history %}
+    
+    
+    <div class="right-column">
+        <h1>Profile</h1>
         <div>
-            <img src="{{ order.image }}"/>
-            <span>{{ order.total }}</span>
-            <span>{{ order.date }}</span>
-            <button>Save Item</button>
+            <form method="post" action="/account/edit/">
+                <p>First Name: <input type="text" value="{{ firstname }}" class="accountedittext" id="firstname" name="firstname"></p>
+                <p>Last Name: <input type="text" value="{{ lastname }}" class="accountedittext" id="lastname" name="lastname"></p>
+                <p>Email: <input type="email" value="{{ email }}" class="accountedittext" id="email" name="email"></p>
+                <p>Birthday: <input type="date" value="{{ birthday }}" class="accountedittext" id="birthday" name="birthday"></p>
+                <input type="submit" class="submitbutton" value="Submit Changes" id="edit-account"></button>
+            </form>
+            <form method="post" action="/account/logout/">
+                <input type="submit" class="submitbutton" value="Logout" id="logout" onclick="logout()"></button>
+            </form>
+            
         </div>
-        {% endfor %}
     </div>
+    
+    
+    <script src="{% static 'account/accountInfo.js' %}"></script>
 </body>
