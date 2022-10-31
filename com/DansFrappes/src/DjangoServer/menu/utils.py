@@ -1,4 +1,4 @@
-from .models import Ingredient, Order
+from .models import Ingredient, Order, DrinkPreset
 
 def place_order(user):
     total = 0
@@ -22,3 +22,9 @@ def add_item_to_cart(user, item):
 
 def get_empty_order():
     return {'items':[]}
+
+def get_menu():
+    return DrinkPreset.objects.all()
+
+def get_unfulfilled():
+    return Order.objects.get(fulfilled=False).order_by('-time')
