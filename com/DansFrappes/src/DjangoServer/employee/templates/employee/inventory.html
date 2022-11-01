@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <title>{{ page_title }}</title>
+    <meta charset="utf-8">
+    <link href="{% static 'employee/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <script src="{% static 'employee/headerWithMenu.js' %}"></script>
+    <div id="mainDiv">
+        <div class="itemDiv">
+            <h3>Caramel</h3>
+            <p>Current: 20</p>
+            <div>
+                <p>Order: 0</p>
+                <button class="add">+</button>
+                <button class="subtract">-</button>
+            </div>
+            <button>Submit</button>
+        </div>
+    </div>
+</body>
