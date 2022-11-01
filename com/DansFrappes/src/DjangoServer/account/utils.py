@@ -1,5 +1,6 @@
 from django.contrib.auth.models import Group
 from .models import UserAccount
+from menu.models import Order, DrinkPreset
 
 def create_account(email, first, last, password):
     '''
@@ -28,3 +29,6 @@ def add_funds(user, amount):
     # print("Final: " + str(user.funds))
     user.save()
     pass
+
+def get_recent_orders(user, amount):
+    return Order.objects.get(user=user).order_by('time')[:amount]
