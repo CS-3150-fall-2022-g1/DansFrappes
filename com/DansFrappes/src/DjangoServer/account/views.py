@@ -19,12 +19,14 @@ def view(request):
     firstname = request.user.first_name
     lastname =  request.user.last_name
     email = request.user.email
-    birthday = request.user.birthday.strftime('%Y-%m-%d')
+    birthday = request.user.birthday
+    if birthday != None:
+      birthday = birthday.strftime('%Y-%m-%d')
     funds = request.user.funds
     employee = isEmployee(request.user)
     hoursWorked = request.user.hours_worked
     hourlywage = request.user.hourly_wage
-
+    manager = isManager(request.user)
     return render(request, "account/view.html", 
       {
         'firstname':firstname, 
@@ -34,7 +36,8 @@ def view(request):
         'funds':funds, 
         'employee':employee,
         'hourlywage':hourlywage,
-        'hoursworked':hoursWorked
+        'hoursworked':hoursWorked,
+        'manager':manager
         })
 
 @csrf_exempt
@@ -139,4 +142,13 @@ def add_hours(request):
       return redirect("/account/view/")
 
   return view(request)
-  pass
+
+@login_required
+@csrf_exempt
+def see_all_users(request):
+  if not isManager(request.user):
+    redirect("/menu/")
+  
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
+  return render(request, "account/alluseraccounts.html",  {'employee':employee, 'manager':manager})

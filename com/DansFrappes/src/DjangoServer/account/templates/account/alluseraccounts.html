@@ -4,21 +4,24 @@
 <head>
     <title>{{ page_title }}</title>
     <meta charset="utf-8">
-    <link href="{% static 'employee/style.css' %}" rel="stylesheet">
+    <link href="{% static 'account/style.css' %}" rel="stylesheet">
 </head>
-<body style="background-color: #D9D9D9">
+<body style="background-color: #D9D9D9;">
     <script>const manager = "{{ manager }}"; const employee = "{{ employee }}";</script>
-    <script src="{% static 'employee/headerWithMenu.js' %}"></script>
+    <script src="{% static 'account/headerWithMenu.js' %}"></script>
+    
+    <script>document.getElementById("h1Title").innerHTML = "All Users" </script>
     <div id="mainDivGrey">
         <div class="itemDiv row">
-            <table class="div-table">
+            <table class="div-table" >
                 <th>
                     <h3>Username 1</h3>
                 </th>
                 <th>
-                    <p>Drink: Name</p>
+                    <p>Hours Worked: ##</p>
                 <th>
-                <button class="action-button">Done</button>
+                <button class="action-button">Pay</button>
+                <button class="action-button">Edit</button>
                 </th>
             </table>    
         </div>
@@ -28,9 +31,10 @@
                     <h3>Username 2</h3>
                 </th>
                 <th>
-                    <p>Drink: Name</p>
+                    <p>Hours Worked: ##</p>
                 <th>
-                <button class="action-button">Done</button>
+                <button class="action-button">Pay</button>
+                <button class="action-button">Edit</button>
                 </th>
             </table>
         </div>
@@ -40,9 +44,10 @@
                     <h3>Username 3</h3>
                 </th>
                 <th>
-                    <p>Drink: Name</p>
+                    <p>Hours Worked: ##</p>
                 <th>
-                <button class="action-button">Done</button>
+                <button class="action-button">Pay</button>
+                <button class="action-button">Edit</button>
                 </th>
             </table>
         </div>
@@ -52,9 +57,10 @@
                     <h3>Username 4</h3>
                 </th>
                 <th>
-                    <p>Drink: Name</p>
+                    <p>Hours Worked: ##</p>
                 <th>
-                <button class="action-button">Done</button>
+                <button class="action-button">Pay</button>
+                <button class="action-button">Edit</button>
                 </th>
             </table>
         </div>
