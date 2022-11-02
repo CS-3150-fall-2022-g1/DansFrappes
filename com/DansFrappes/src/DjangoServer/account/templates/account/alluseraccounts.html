@@ -12,58 +12,21 @@
     
     <script>document.getElementById("h1Title").innerHTML = "All Users" </script>
     <div id="mainDivGrey">
-        <div class="itemDiv row">
+        {% for u in all_users %}
+        <div class="itemDiv row"> 
             <table class="div-table" >
                 <th>
-                    <h3>Username 1</h3>
+                    <h3> {{ u.first_name }} {{ u.last_name }}</h3>
                 </th>
                 <th>
-                    <p>Hours Worked: ##</p>
+                    <p>Account Balance: {{ u.funds }}</p>
                 <th>
                 <button class="action-button">Pay</button>
                 <button class="action-button">Edit</button>
                 </th>
             </table>    
         </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 2</h3>
-                </th>
-                <th>
-                    <p>Hours Worked: ##</p>
-                <th>
-                <button class="action-button">Pay</button>
-                <button class="action-button">Edit</button>
-                </th>
-            </table>
-        </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 3</h3>
-                </th>
-                <th>
-                    <p>Hours Worked: ##</p>
-                <th>
-                <button class="action-button">Pay</button>
-                <button class="action-button">Edit</button>
-                </th>
-            </table>
-        </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 4</h3>
-                </th>
-                <th>
-                    <p>Hours Worked: ##</p>
-                <th>
-                <button class="action-button">Pay</button>
-                <button class="action-button">Edit</button>
-                </th>
-            </table>
-        </div>
+        {% endfor %}
     </div>
     <div id="footer">
         <h1>Dan's Frappes</h1>

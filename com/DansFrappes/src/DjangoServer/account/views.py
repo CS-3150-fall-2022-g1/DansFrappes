@@ -149,6 +149,7 @@ def see_all_users(request):
   if not isManager(request.user):
     return redirect("/menu/")
   
+  userList = UserAccount.objects.values()
   employee = isEmployee(request.user)
   manager = isManager(request.user)
-  return render(request, "account/alluseraccounts.html",  {'employee':employee, 'manager':manager})
+  return render(request, "account/alluseraccounts.html",  {'employee':employee, 'manager':manager, 'all_users':userList})
