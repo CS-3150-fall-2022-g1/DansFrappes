@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -5,16 +6,55 @@
 		<title>Item</title>
 		<meta charset="utf-8">
 		<link href="{% static 'account/style.css' %}" rel="stylesheet">
-		
+        <link href="{% static 'menu/style.css' %}" rel="stylesheet">
 
 	</head>
         <body>
-            <div>
-                <p>This is my item page</p>
+            <div class="container">
+                <div class="grid_item">
+                    <img src="homeIcon.png">
+                </div>
+                <div class="grid_item">
+                    <div>
+                        <p>description</p>
+                    </div>
+                    <div class="milk_row">
+                        <p>Milk</p>
+                        <select name="milk" id="milk_selector">
+                            {% for milk in milk_list%}
+                            <option>{{milk.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="toppings_section">
+                        <p>Toppings</p>
+                        {% for ingredient, amount in drink.items %}
+                        {% if ingredient != "milk" %}
+                        <div class="topping_row">
+                            <p>{{drink.order}}</p>
+                            <button onclick="removeTopping({{ forloop.counter }})">x</button>
+                            <span>{{ ingredient }}</span>
+                            <span>qty</span>
+                            <input type="number" min="1" max="9" value="{{ amount }}">
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                        <select name="toppings" id="toppings_selector">
+                            {% for topping in toppings_list %}
+                            <option>{{topping.name}}</option>
+                            {% endfor %}
+                        </select>
+                        <span>qty</span>
+                        <input type="number" min="1" max="9">
+                    </div>
+                    <div>
+                        <button onclick="addTopping()">+</button>
+                    </div>
+                    <div>
+                        <button>Add to Cart</button>
+                    </div>
+                </div>
             </div>
         </body>
-
-        <script>
-
-        </script>
+        <script src="{% static 'menu/script.js' %}"></script>
     </html>
