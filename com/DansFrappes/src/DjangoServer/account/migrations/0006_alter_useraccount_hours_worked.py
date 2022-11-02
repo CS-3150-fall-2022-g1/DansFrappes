@@ -2,16 +2,11 @@
 
 from django.db import migrations, models
 
-from account.models import UserAccount
+
 
 
 class Migration(migrations.Migration):
-    def add_admin(apps, schema_editor):
-        admin = UserAccount.objects.create_user("admin", "admin@gmail.com", "password")
-        admin.first_name = "admin"
-        admin.last_name = " "
-        admin.setManager()
-        admin.save()
+    
 
     dependencies = [
         ('account', '0005_permissions'),
@@ -24,6 +19,6 @@ class Migration(migrations.Migration):
             field=models.DecimalField(decimal_places=2, default=0, max_digits=4),
         ),
 
-        migrations.RunPython(add_admin)
+        
         
     ]

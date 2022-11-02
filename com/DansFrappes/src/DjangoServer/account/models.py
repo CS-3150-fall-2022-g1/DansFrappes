@@ -12,6 +12,9 @@ class UserAccount(AbstractUser):
     cart = models.JSONField(default=get_empty_order)
     hourly_wage = models.DecimalField(max_digits=4, decimal_places=2, default=0)
     hours_worked = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    employee = models.BooleanField(default=False)
+    manager = models.BooleanField(default=False)
+
 
     def setCustomer(self):
         """
@@ -27,7 +30,14 @@ class UserAccount(AbstractUser):
         self.groups.clear()
         group = Group.objects.get(name="employee")
         self.user.groups.add(group)
+        self.employee = True
         return self
+
+    def isEmployee(self):
+        return self.employee
+    
+    def isManager(self):
+        return self.manager
 
     def setManager(self):
         """
@@ -38,6 +48,8 @@ class UserAccount(AbstractUser):
         managerGroup = Group.objects.get(name="manager")
         self.groups.add(employeeGroup)
         self.groups.add(managerGroup)
+        self.manager = True
+        self.employee = True
         return self
 
     class Meta:
