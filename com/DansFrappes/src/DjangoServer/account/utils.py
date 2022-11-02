@@ -3,11 +3,11 @@ from django.contrib.auth.models import Group
 from .models import UserAccount
 from menu.models import Order, DrinkPreset
 
-def create_account(email, first, last, password):
+def create_account(username, email, first, last, password):
     '''
     Create a new user account
     '''
-    user = UserAccount.objects.create_user(email, email, password)
+    user = UserAccount.objects.create_user(username, email, password)
     user.first_name = first
     user.last_name = last
     user.save()

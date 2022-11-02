@@ -123,7 +123,7 @@ def createaccount(request):
     # method signature is create_user(username, email, password)
     # using email as username for now
     if valid:
-      user = create_account(email, first_name, last_name, password) # Helper method to create a user with the new UserAccount model
+      user = create_account(username, email, first_name, last_name, password) # Helper method to create a user with the new UserAccount model
 
       user.save()
       login(request, user)
