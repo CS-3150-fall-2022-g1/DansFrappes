@@ -11,7 +11,7 @@ class UserAccount(AbstractUser):
     funds = models.DecimalField(max_digits=6,decimal_places=2,default=0)
     cart = models.JSONField(default=get_empty_order)
     hourly_wage = models.DecimalField(max_digits=4, decimal_places=2, default=0)
-    hours_worked = models.SmallIntegerField(default=0)
+    hours_worked = models.DecimalField(max_digits=4, decimal_places=2, default=0)
 
     def setCustomer(self, request):
         """

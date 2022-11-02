@@ -14,10 +14,21 @@
                 <p id="balance">${{ funds }}</p>
                 <p id="ch-bal-p">Change Balance</p>
                 <form method="post" action="/account/addfunds/">
-                    <input type="number" value="0.00" onchange="setTwoNumberDecimal(this)" id="change-balance" step=".01" name="amount" id="amount"></input>
+                    <input type="number" value="0.00" onchange="setTwoNumberDecimal(this)" id="change-balance" step=".01" name="amount"></input>
                     <input type="submit" class="submitbutton" value="Add" id="add-funds-button"></input>
                 </form>
-                
+                 {% if employee %}
+                <div>
+                    <h2 id="h2-acc-hr">Employee Information</h2>
+                    <p>Hourly Wage: ${{ hourlywage }}</p>
+                    <p> Hours Worked: {{hoursworked }}</p>
+                    <p>Add hours Worked: </p>
+                    <form method="post" action="/account/addhours/">
+                        <input type="number" value="0" onchange="setTwoNumberDecimal(this)" id="change-hours" step=".01" name="hour"></input>
+                        <input type="submit" class="submitbutton" value="Add" id="add-hrs-button"></input>
+                    </form>
+                </div>
+                 {% endif %}
             
                 <h2>Order History</h2>
                 {% for order in order_history %}

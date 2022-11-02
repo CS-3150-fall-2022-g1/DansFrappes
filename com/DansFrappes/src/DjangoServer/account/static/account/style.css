@@ -116,6 +116,7 @@ width: 40px;
 #ch-bal-p {
   font-size: larger;
 }
+
 #change-balance{
   margin:1%;
   margin-bottom: 5%;
@@ -123,6 +124,15 @@ width: 40px;
   text-align: center;
   border-radius: 20px;
 }
+
+#change-hours{
+  margin:1%;
+  margin-bottom: 5%;
+  font-size: large;
+  text-align: center;
+  border-radius: 20px;
+}
+
 .accountedittext {
   font-size: larger;
   text-align: center;

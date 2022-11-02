@@ -8,7 +8,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
 
 from account.models import UserAccount
-from account.utils import create_account, update_account_data, add_funds
+from account.utils import create_account, update_account_data, add_funds, isEmployee, isManager
 
 def index(request):
     return redirect('/account/view',permanent=True)
@@ -21,8 +21,21 @@ def view(request):
     email = request.user.email
     birthday = request.user.birthday
     funds = request.user.funds
+    employee = isEmployee(request.user)
+    hoursWorked = request.user.hours_worked
+    hourlywage = request.user.hourly_wage
 
-    return render(request, "account/view.html", {'firstname':firstname, 'lastname':lastname, 'email':email, 'birthday': birthday, 'funds':funds})
+    return render(request, "account/view.html", 
+      {
+        'firstname':firstname, 
+        'lastname':lastname, 
+        'email':email, 
+        'birthday': birthday, 
+        'funds':funds, 
+        'employee':employee,
+        'hourlywage':hourlywage,
+        'hoursworked':hoursWorked
+        })
 
 @csrf_exempt
 @login_required
@@ -114,3 +127,16 @@ def createaccount(request):
       return redirect("/menu/")
   return render(request, "account/create.html", context)
 # Create your views here.
+
+@csrf_exempt
+def add_hours(request):
+  if request.method == 'POST':
+      user = request.user
+      hours = Decimal(float((request.POST.get('hour'))))
+      user.hours_worked = user.hours_worked + hours
+      print("Adding hours: "  + str(hours) + " "  +str(user.hours_worked))
+      user.save()
+      return redirect("/account/view/")
+
+  return view(request)
+  pass

@@ -12,6 +12,12 @@ def create_account(email, first, last, password):
     user.save()
     return user
 
+def isEmployee(user):
+    return user.groups.filter(name="employee").exists()
+
+def isManager(user):
+    return user.groups.filter(name="manager").exists()
+
 def update_account_data(user, email, first, last, birthday):
     '''
     Update the user with info from the accountInfo dictionary
