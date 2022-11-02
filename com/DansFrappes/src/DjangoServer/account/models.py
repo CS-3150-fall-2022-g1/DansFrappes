@@ -13,14 +13,14 @@ class UserAccount(AbstractUser):
     hourly_wage = models.DecimalField(max_digits=4, decimal_places=2, default=0)
     hours_worked = models.DecimalField(max_digits=4, decimal_places=2, default=0)
 
-    def setCustomer(self, request):
+    def setCustomer(self):
         """
         Remove this user from groups. This is only needed when removing permissions from an employee.
         """
         self.groups.clear()
         return self
 
-    def setEmployee(self, request):
+    def setEmployee(self):
         """
         Move this user to the 'employee' group
         """
@@ -29,7 +29,7 @@ class UserAccount(AbstractUser):
         self.user.groups.add(group)
         return self
 
-    def setManager(self, request):
+    def setManager(self):
         """
         Move this user to the 'manager' group
         """
