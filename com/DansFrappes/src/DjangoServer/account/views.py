@@ -19,7 +19,7 @@ def view(request):
     firstname = request.user.first_name
     lastname =  request.user.last_name
     email = request.user.email
-    birthday = request.user.birthday
+    birthday = request.user.birthday.strftime('%Y-%m-%d')
     funds = request.user.funds
     employee = isEmployee(request.user)
     hoursWorked = request.user.hours_worked
