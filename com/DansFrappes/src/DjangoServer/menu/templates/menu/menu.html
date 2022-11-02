@@ -7,10 +7,53 @@
 		<title>Menu Screen</title>
 		<meta charset="utf-8">
 		<link href="{% static 'account/style.css' %}" rel="stylesheet">
+		<link href="{% static 'menu/style.css' %}" rel="stylesheet">
 	</head>
 
 	<body>
+		<script src="{% static 'menu/header.js' %}"></script>
 		<script src="{% static 'menu/headerWithMenu.js' %}"></script>
 		<script src="{% static 'menu/script.js' %}"></script>
+		<div class="container">
+			<div class="grid_item">
+				<p>1</p>
+				<img src="homeIcon.png" onclick="window.location.href = '{% url \'menuItem\' item=frappe1 %}' " />
+			</div>
+			<div class="grid_item">
+				<p>2</p>
+				<img src="homeIcon.png">
+			</div>
+			<div class="grid_item">
+				<p>3</p>
+				<img src="homeIcon.png">
+			</div>
+			<div class="grid_item">
+				<p>4</p>
+				<img src="homeIcon.png">
+			</div>
+			<div class="grid_item">
+				<p>5</p>
+				<img src="homeIcon.png">
+			</div>
+			<div class="grid_item">
+				<p>6</p>
+				<img src="homeIcon.png">
+			</div>
+		</div>
 	</body>
+
+	<script>
+		function add_item_to_cart(item, user) {
+
+		}
+
+		function add_topping() {
+		
+		}
+
+		function gotoItem(itemPath) {
+
+		}
+	</script>
+
 </html>
