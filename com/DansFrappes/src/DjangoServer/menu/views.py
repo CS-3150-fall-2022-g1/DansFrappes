@@ -4,9 +4,12 @@ from django.template import loader
 from .models import DrinkPreset, Ingredient, MilkIngredient
 from .utils import get_menu
 from django.db.models import Q
+from account.utils import isEmployee, isManager
 
 def index(request):
-  return render(request, 'menu/menu.html', {'item_list': get_menu()})
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
+  return render(request, 'menu/menu.html', {'item_list': get_menu(), 'employee':employee, 'manager':manager})
 
 def view_item(request, item):
   drink = DrinkPreset.objects.get(name=item)
