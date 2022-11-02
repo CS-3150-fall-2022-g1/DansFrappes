@@ -32,14 +32,13 @@
                         {% if ingredient != "milk" %}
                         <div class="topping_row">
                             <p>{{drink.order}}</p>
-                            <button onclick="remove_topping()">x</button>
+                            <button onclick="removeTopping({{ forloop.counter }})">x</button>
                             <span>{{ ingredient }}</span>
                             <span>qty</span>
                             <input type="number" min="1" max="9" value="{{ amount }}">
                         </div>
                         {% endif %}
                         {% endfor %}
-                        <button onclick="remove_topping()">x</button>
                         <select name="toppings" id="toppings_selector">
                             {% for topping in toppings_list %}
                             <option>{{topping.name}}</option>
@@ -49,7 +48,7 @@
                         <input type="number" min="1" max="9">
                     </div>
                     <div>
-                        <button onclick="add_topping_item()">+</button>
+                        <button onclick="addTopping()">+</button>
                     </div>
                     <div>
                         <button>Add to Cart</button>
@@ -57,14 +56,5 @@
                 </div>
             </div>
         </body>
-
-        <script>
-            function add_milk() {
-
-            }
-
-            function add_topping_item() {
-
-            }
-        </script>
+        <script src="{% static 'menu/script.js' %}"></script>
     </html>
