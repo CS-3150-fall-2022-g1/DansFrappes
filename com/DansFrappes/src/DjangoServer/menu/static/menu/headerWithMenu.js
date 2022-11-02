@@ -14,7 +14,7 @@ header.id = "headerDiv";
 document.body.appendChild(header);
 
 var h1_1 = document.createElement("h1");
-h1_1.innerHTML = "Account";
+h1_1.innerHTML = "Dan's Frapps";
 h1_1.id = "h1Title";
 header.appendChild(h1_1);
 
