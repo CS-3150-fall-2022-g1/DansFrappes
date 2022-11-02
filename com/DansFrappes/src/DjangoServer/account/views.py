@@ -147,7 +147,7 @@ def add_hours(request):
 @csrf_exempt
 def see_all_users(request):
   if not isManager(request.user):
-    redirect("/menu/")
+    return redirect("/menu/")
   
   employee = isEmployee(request.user)
   manager = isManager(request.user)
