@@ -20,7 +20,7 @@
                     </div>
                     <div class="milk_row">
                         <p>Milk</p>
-                        <select name="milk" id="milk_selector">
+                        <select name="milk" id="milk-selector">
                             {% for milk in milk_list%}
                             <option>{{milk.name}}</option>
                             {% endfor %}
@@ -29,43 +29,30 @@
                     <div class="ingredient-section">
                         <p>Toppings</p>
                         <div id="ingredient-list">
-                            {% for ingredient, amount in drink.items %}
-                            {% if ingredient != "milk" %}
-                            <div class="topping_row" id="topping_{{ forloop.counter }}">
-                                <button onclick="removeTopping({{ forloop.counter }})">x</button>
-                                <span>{{ ingredient }}</span>
-                                <span id="{{ ingredient }}" style="visibility:hidden"></span>
-                                <span>qty</span>
-                                <input type="number" min="1" max="9" value="{{ amount }}">
-                            </div>
-                            {% endif %}
-                            {% endfor %}
                         </div>
-                        <select name="ingredient" id="ingredient_selector">
+                        <select name="ingredient" id="ingredient-selector">
                             {% for topping in toppings_list %}
                             <option>{{topping.name}}</option>
                             {% endfor %}
                         </select>
                         <span>qty</span>
-                        <input type="number" min="1" max="9">
+                        <input id="amount-selector" type="number" min="1" max="9" value="1">
                     </div>
                     <div>
-                        <button onclick="addTopping()">+</button>
+                        <button onclick="addIngredient(true)">+</button>
                     </div>
                     <div>
                         <button onclick="">Add to Cart</button>
                     </div>
+                    
+                    <script src="{% static 'menu/item_script.js' %}"></script>
+                    {% for ingredient, amount in drink.items %}
+                    {% if ingredient != "milk" %}
+                    <script>initIngredient("{{ingredient}}",{{amount}})</script>
+                    {% endif %}
+                    {% endfor %}
+                    <script>drawIngredients()</script>
                 </div>
             </div>
         </body>
-        
-        <div class="topping_row" id="ingredient-template">
-            <button id="exit-button">x</button>
-            <span id="ingredient-name"></span>
-            <span id="ingredient-amount">qty</span>
-            <span id="ingredient-id" style="visibility:hidden"></span>
-            <input type="number" min="1" max="9" id="amount">
-        </div>
-
-        <script src="{% static 'menu/item_script.js' %}"></script>
     </html>
