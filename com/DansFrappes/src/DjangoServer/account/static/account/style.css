@@ -215,4 +215,16 @@ th{
   width: 33%;
 }
 
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #0A2136;
+  overflow: hidden;
+  color: #ffffff
+}
+
+.footer h1{
+  padding: 1%;
+}
 
