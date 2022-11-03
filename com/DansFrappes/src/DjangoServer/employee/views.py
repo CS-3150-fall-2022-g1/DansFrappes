@@ -5,6 +5,8 @@ from account.models import UserAccount
 from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_exempt
 
+from menu.models import Order
+
 
 
 def inventory(request):
@@ -17,7 +19,8 @@ def queue(request):
     page_title = 'Order Queue'
     employee = isEmployee(request.user)
     manager = isManager(request.user)
-    return render(request, 'employee/queue.html', {'page_title': page_title, 'employee':employee, 'manager':manager})
+    orders = Order.objects.values()
+    return render(request, 'employee/queue.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'orders':orders})
 
 def employee(request):
     page_title = 'Employees'
@@ -37,7 +40,6 @@ def payemployees(request):
         for e in empList:
             e.pay()
     return redirect("/employee/")
-    pass
 
 @csrf_exempt
 def payemployee(request):
@@ -48,7 +50,6 @@ def payemployee(request):
         u = UserAccount.objects.get(pk=empId)
         u.pay()
     return redirect("/employee/")
-    pass
 
 @csrf_exempt
 def editWage(request):
@@ -61,4 +62,13 @@ def editWage(request):
         u.setWage(wage)
         u.save()
     return redirect("/employee/")
-    pass
+
+def fulfillOrder(request):
+    if not isEmployee(request.user):
+        return redirect("/menu/")
+    if request.method == 'POST':
+        orderid = int(request.POST.get("order_idx"))
+        order = Order.objects.get(pk=orderid)
+        order.fulfilled = True
+        order.save()
+    return redirect("/employee/queue/")
