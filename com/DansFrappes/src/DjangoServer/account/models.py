@@ -10,7 +10,7 @@ class UserAccount(AbstractUser):
     birthday = models.DateField(default=None, blank=True, null=True)
     funds = models.DecimalField(max_digits=6,decimal_places=2,default=0)
     cart = models.JSONField(default=get_empty_order)
-    hourly_wage = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    hourly_wage = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     hours_worked = models.DecimalField(max_digits=4, decimal_places=2, default=0)
     employee = models.BooleanField(default=False)
     manager = models.BooleanField(default=False)
@@ -23,6 +23,7 @@ class UserAccount(AbstractUser):
         self.groups.clear()
         self.manager = False
         self.employee = False
+        self.save()
         return self
 
     def setEmployee(self):
@@ -32,8 +33,10 @@ class UserAccount(AbstractUser):
         self.groups.clear()
         group = Group.objects.get(name="employee")
         self.groups.add(group)
+        self.hourly_wage = 15.00
         self.employee = True
         self.manager = False
+        self.save()
         return self
 
     def isEmployee(self):
@@ -51,8 +54,21 @@ class UserAccount(AbstractUser):
         managerGroup = Group.objects.get(name="manager")
         self.groups.add(employeeGroup)
         self.groups.add(managerGroup)
+        self.hourly_wage = 400.00
         self.manager = True
         self.employee = True
+        self.save()
+        return self
+
+    def pay(self):
+        self.funds += self.hourly_wage * self.hours_worked
+        self.hours_worked = 0.0
+        self.save()
+        return self
+
+    def setWage(self, wage):
+        self.hourly_wage = wage
+        self.save()
         return self
 
     class Meta:
