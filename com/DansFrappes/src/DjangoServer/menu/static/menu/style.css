@@ -189,3 +189,7 @@ width: 40px;
   flex-basis: auto;
   border-radius: 8px;
 }
+
+#ingredient-template {
+  visibility: hidden;
+}
