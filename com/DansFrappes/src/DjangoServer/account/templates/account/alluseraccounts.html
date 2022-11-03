@@ -16,18 +16,34 @@
         <div class="itemDiv row"> 
             <table class="div-table" >
                 <th>
-                    <h3> {{ u.first_name }} {{ u.last_name }}</h3>
+                    <h3 class="usernameheader"> {{ u.first_name }} {{ u.last_name }}</h3>
                 </th>
                 <th>
                     <p>Account Balance: {{ u.funds }}</p>
                 </th>
                 <th>
                 {% if not u.employee %}
-                <p>{{ u.employee }}</p>
                 <form method="post" action="/account/hireuser/">
-                    <input type="number" value="{{ u.pk }}" style="visibility: hidden;" name="user_idx" id="user_idx">
-                    <input type="submit">
+                    <input type="number" value="{{ u.id }}" style="visibility: hidden;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Hire" class="empeditbutton">
                 </form>
+                {% endif %}
+                {% if u.employee and u.id != user.id %}
+                <form method="post" action="/account/fireuser/">
+                    <input type="number" value="{{ u.id }}" style="visibility: hidden;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Fire" class="empeditbutton">
+                </form>
+                {% if not u.manager %}
+                <form method="post" action="/account/promoteemployee/">
+                    <input type="number" value="{{ u.id }}" style="visibility: hidden;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Promote" class="empeditbutton">
+                </form>
+                {% else %}
+                <form method="post" action="/account/demoteemployee/">
+                    <input type="number" value="{{ u.id }}" style="visibility: hidden;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Demote" class="empeditbutton">
+                </form>
+                {% endif %}
                 {% endif %}
                 </th>
             </table>    

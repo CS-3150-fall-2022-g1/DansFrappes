@@ -21,6 +21,8 @@ class UserAccount(AbstractUser):
         Remove this user from groups. This is only needed when removing permissions from an employee.
         """
         self.groups.clear()
+        self.manager = False
+        self.employee = False
         return self
 
     def setEmployee(self):
@@ -29,8 +31,9 @@ class UserAccount(AbstractUser):
         """
         self.groups.clear()
         group = Group.objects.get(name="employee")
-        self.user.groups.add(group)
+        self.groups.add(group)
         self.employee = True
+        self.manager = False
         return self
 
     def isEmployee(self):

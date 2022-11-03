@@ -3,7 +3,7 @@ from turtle import update
 from unicodedata import decimal
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import login, logout, authenticate
 from django.views.decorators.csrf import csrf_exempt
 
@@ -153,3 +153,53 @@ def see_all_users(request):
   employee = isEmployee(request.user)
   manager = isManager(request.user)
   return render(request, "account/alluseraccounts.html",  {'employee':employee, 'manager':manager, 'all_users':userList})
+
+@login_required
+@csrf_exempt
+def hireUser(request):
+  if not isManager(request.user):
+    return redirect("/menu/")
+  if request.method == 'POST':
+    userid = int(request.POST.get("user_idx"))
+    u = UserAccount.objects.get(pk=userid)
+    u.setEmployee()
+    u.save()
+  return redirect("/account/alluseraccounts/")
+
+@login_required
+@csrf_exempt
+def fireUser(request):
+  if not isManager(request.user):
+    return redirect("/menu/")
+  if request.method == 'POST':
+    userid = int(request.POST.get("user_idx"))
+    u = UserAccount.objects.get(pk=userid)
+    u.setCustomer()
+    u.save()
+  return redirect("/account/alluseraccounts/")
+
+@login_required
+@csrf_exempt
+def promoteUser(request):
+  if not isManager(request.user):
+    return redirect("/menu/")
+  if request.method == 'POST':
+    userid = int(request.POST.get("user_idx"))
+    u = UserAccount.objects.get(pk=userid)
+    u.setManager()
+    u.save()
+  return redirect("/account/alluseraccounts/")
+
+@login_required
+@csrf_exempt
+def demoteUser(request):
+  if not isManager(request.user):
+    return redirect("/menu/")
+  if request.method == 'POST':
+    userid = int(request.POST.get("user_idx"))
+    u = UserAccount.objects.get(pk=userid)
+    u.setEmployee()
+    u.save()
+  return redirect("/account/alluseraccounts/")
+
+

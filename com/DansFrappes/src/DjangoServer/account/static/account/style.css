@@ -4,7 +4,6 @@ html, body {
   margin: 0;
 }
 
-
 #headerDiv {
   text-align: center;
   background: #0A2136;
@@ -59,6 +58,22 @@ html, body {
   margin:1%;
 }
 
+.empeditbutton {
+  background: #8F8F8F;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.usernameheader {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
 .itemDiv {
 background-color: #0A2136;
 color: white;
@@ -105,14 +120,17 @@ width: 40px;
   margin: 3%;
   padding: 3%;
 }
+
 #h2-acc-bal {
   padding:1%;
 }
+
 #balance {
   color: #000000;
   font-size: xx-large;
   text-align: center;
 }
+
 #ch-bal-p {
   font-size: larger;
 }

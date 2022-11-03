@@ -74,6 +74,11 @@ if ( employee == "True") {
     queueLink.innerHTML = "Queue";
     sideNav.appendChild(queueLink);
     
+    
+}
+
+
+if( manager == "True") {
     var inventoryLink = document.createElement("a");
     inventoryLink.href= "/employee/inventory/";
     inventoryLink.innerHTML = "Inventory";
@@ -83,10 +88,7 @@ if ( employee == "True") {
     employeeLink.href= "/employee/";
     employeeLink.innerHTML = "Employees";
     sideNav.appendChild(employeeLink);
-}
 
-
-if( manager == "True") {
     var alluserLink = document.createElement("a");
     alluserLink.href= "/account/alluseraccounts/";
     alluserLink.innerHTML = "Accounts";
