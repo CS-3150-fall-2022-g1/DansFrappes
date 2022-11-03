@@ -41,15 +41,19 @@ html, body {
 }
 
 
-#footer {
+.footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 1%;
   background-color: #0A2136;
   overflow: hidden;
   color: #ffffff
 }
+
+.footer h1{
+  padding: 1%;
+}
+
 
 .empeditbutton {
   background: #8F8F8F;
