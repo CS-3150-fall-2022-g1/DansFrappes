@@ -39,10 +39,10 @@
                         <input id="amount-selector" type="number" min="1" max="9" value="1">
                     </div>
                     <div>
-                        <button onclick="addIngredient(true)">+</button>
+                        <button onclick="addIngredient()">+</button>
                     </div>
                     <div>
-                        <button onclick="">Add to Cart</button>
+                        <button onclick="addToCart()">Add to Cart</button>
                     </div>
                     
                     <script src="{% static 'menu/item_script.js' %}"></script>
@@ -53,6 +53,18 @@
                     {% endfor %}
                     <script>drawIngredients()</script>
                 </div>
+                <script>
+                    function addToCart() {
+                        fetch("{% url 'cart_add' %}", {
+                            method: "POST",
+                            redirect: "follow",
+                            headers: {'Content-Type': 'application/json'}, 
+                            body: JSON.stringify(ingredients)
+                        }).then(response => {
+                            window.location.href = response.url;
+                        })
+                    }
+                </script>
             </div>
         </body>
     </html>
