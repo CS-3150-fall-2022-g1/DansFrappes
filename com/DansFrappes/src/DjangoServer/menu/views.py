@@ -6,10 +6,13 @@ from django.template import loader
 from .models import DrinkPreset, Ingredient, MilkIngredient
 from .utils import get_menu, add_item_to_cart
 from django.db.models import Q
+from account.utils import isEmployee, isManager
 import json
 
 def index(request):
-  return render(request, 'menu/menu.html', {'item_list': get_menu()})
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
+  return render(request, 'menu/menu.html', {'item_list': get_menu(), 'employee':employee, 'manager':manager})
 
 def view_item(request, item):
   drink = get_object_or_404(DrinkPreset, name=item)

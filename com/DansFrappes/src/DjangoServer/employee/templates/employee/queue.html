@@ -7,58 +7,32 @@
     <link href="{% static 'employee/style.css' %}" rel="stylesheet">
 </head>
 <body style="background-color: #D9D9D9">
+    <script>const manager = "{{ manager }}"; const employee = "{{ employee }}";</script>
     <script src="{% static 'employee/headerWithMenu.js' %}"></script>
+    <script>document.getElementById("h1Title").innerHTML="Queue"</script>
     <div id="mainDivGrey">
+        {% for order in orders %}
+        {% if not order.fulfilled %}
         <div class="itemDiv row">
             <table class="div-table">
                 <th>
-                    <h3>Username 1</h3>
+                    <h3>{{ order.user.first_name }} {{ order.user.last_name }}</h3>
                 </th>
                 <th>
-                    <p>Drink: Name</p>
+                    <p>Drink: Name --EDIT THIS FIELD--</p>
                 <th>
-                <button class="action-button">Done</button>
+                <form method="post" action="/employee/fulfillorder/">
+                    <input type="number" style="display: none;" value="{{ order.id }}" id="order_idx" name="order_idx">
+                    <input type="submit" class="action-button" value="Done">
+                </form>
+                
                 </th>
             </table>    
         </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 2</h3>
-                </th>
-                <th>
-                    <p>Drink: Name</p>
-                <th>
-                <button class="action-button">Done</button>
-                </th>
-            </table>
-        </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 3</h3>
-                </th>
-                <th>
-                    <p>Drink: Name</p>
-                <th>
-                <button class="action-button">Done</button>
-                </th>
-            </table>
-        </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 4</h3>
-                </th>
-                <th>
-                    <p>Drink: Name</p>
-                <th>
-                <button class="action-button">Done</button>
-                </th>
-            </table>
-        </div>
+        {% endif %}
+        {% endfor %}
     </div>
-    <div id="footer">
+    <div class="footer">
         <h1>Dan's Frappes</h1>
     </div>
 </body>

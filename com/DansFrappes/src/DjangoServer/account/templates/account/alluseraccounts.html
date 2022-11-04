@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<head>
+    <title>{{ page_title }}</title>
+    <meta charset="utf-8">
+    <link href="{% static 'account/style.css' %}" rel="stylesheet">
+</head>
+<body style="background-color: #D9D9D9;">
+    <script>const manager = "{{ manager }}"; const employee = "{{ employee }}";</script>
+    <script src="{% static 'account/headerWithMenu.js' %}"></script>
+    
+    <script>document.getElementById("h1Title").innerHTML = "All Users" </script>
+    <div id="mainDivGrey">
+        {% for u in all_users %}
+        <div class="itemDiv row"> 
+            <table class="div-table" >
+                <th>
+                    <h3 class="usernameheader"> {{ u.first_name }} {{ u.last_name }}</h3>
+                </th>
+                <th>
+                    <p>Account Balance: {{ u.funds }}</p>
+                </th>
+                <th>
+                {% if not u.employee %}
+                <form method="post" action="/account/hireuser/">
+                    <input type="number" value="{{ u.id }}" style="display: none;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Hire" class="empeditbutton">
+                </form>
+                {% endif %}
+                {% if u.employee and u.id != user.id %}
+                <form method="post" action="/account/fireuser/">
+                    <input type="number" value="{{ u.id }}" style="display: none;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Fire" class="empeditbutton">
+                </form>
+                {% if not u.manager %}
+                <form method="post" action="/account/promoteemployee/">
+                    <input type="number" value="{{ u.id }}" style="display: none;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Promote" class="empeditbutton">
+                </form>
+                {% else %}
+                <form method="post" action="/account/demoteemployee/">
+                    <input type="number" value="{{ u.id }}" style="display: none;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Demote" class="empeditbutton">
+                </form>
+                {% endif %}
+                {% endif %}
+                </th>
+            </table>    
+        </div>
+        {% endfor %}
+    </div>
+    <div class="footer">
+        <h1>Dan's Frappes</h1>
+    </div>
+</body>

@@ -7,10 +7,10 @@ def make_permissions(apps, schema_editor):
 
     
 
-    employees.permissions.add(Permission.objects.get(codename='handle_orders'))
-    managers.permissions.add(Permission.objects.get(codename='edit_employees'))
-    managers.permissions.add(Permission.objects.get(codename='order_inventory'))
-    managers.permissions.add(Permission.objects.get(codename='edit_menu'))
+    # employees.permissions.add(Permission.objects.get(codename='handle_orders'))
+    # managers.permissions.add(Permission.objects.get(codename='edit_employees'))
+    # managers.permissions.add(Permission.objects.get(codename='order_inventory'))
+    # managers.permissions.add(Permission.objects.get(codename='edit_menu'))
 
 class Migration(migrations.Migration):
 
