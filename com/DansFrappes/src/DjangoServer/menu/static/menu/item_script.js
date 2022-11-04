@@ -22,10 +22,6 @@ function removeIngredient(ingredient) {
     drawIngredients()
 }
 
-function addToCart() {
-
-}
-
 function drawIngredients() {
     ingredientList.innerHTML=""
     for (const [ingredient, amount] of Object.entries(ingredients)) {
@@ -54,4 +50,12 @@ function makeIngredientDisplay(ingredient) {
     template.appendChild(qty)
 
     return template
+}
+
+function addToCart(path) {
+    fetch(path, {
+        method: "POST",
+        headers: {'Content-Type': 'application/json'}, 
+        body: JSON.stringify(ingredients)
+    })
 }
