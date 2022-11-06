@@ -4,10 +4,12 @@ def place_order(user):
     total = 0
 
     # Check for out of stock ingredients and calculate price
-    # key is the name of the ingredient, value is the amount of the item 
+    # key is the name of the ingredient, value is the amount of the item
     
     for item in user.cart.get('items'):
         for key, value in item.items():
+            if key == 'milk':
+                ingredient = MilkIngredient.objects.get(name=value)
             ingredient = Ingredient.objects.get(name=key)
             total += ingredient.sell_cost * value
 

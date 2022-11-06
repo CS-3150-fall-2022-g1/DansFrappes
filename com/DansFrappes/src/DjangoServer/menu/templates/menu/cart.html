@@ -4,7 +4,7 @@
 
 <html lang="en">
 	<head>
-		<title>Menu Screen</title>
+		<title>Dan's Frappes - Cart</title>
 		<meta charset="utf-8">
 		<link href="{% static 'account/style.css' %}" rel="stylesheet">
 		<link href="{% static 'menu/style.css' %}" rel="stylesheet">
@@ -14,13 +14,9 @@
 		<script>const manager = "{{ manager }}"; const employee = "{{ employee }}";</script>
 		<script src="{% static 'menu/headerWithMenu.js' %}"></script>
 		<script src="{% static 'menu/script.js' %}"></script>
-		<div class="container">
-			{% for item in item_list %}
-			<div class="grid_item itemDiv" onclick="window.location.href = '{% url 'menu_item' item=item.name %}' ">
-				<p>{{ item.name }}</p>
-				<img src="homeIcon.png" />
-			</div>
-			{% endfor %}
+		<div>
+			<h2>Cart</h2>
+            <form method="post" action=""><button type="submit">Place Order</button></form>
 		</div>
 	</body>
 </html>
