@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<title>Item</title>
+		<meta charset="utf-8">
+		<link href="{% static 'account/style.css' %}" rel="stylesheet">
+        <link href="{% static 'menu/style.css' %}" rel="stylesheet">
+
+	</head>
+        <body>
+            <div class="container">
+                <div class="grid_item">
+                    <img src="homeIcon.png">
+                </div>
+                <div class="grid_item">
+                    <div>
+                        <p>description</p>
+                    </div>
+                    <div class="milk_row">
+                        <p>Milk</p>
+                        <select name="milk" id="milk-selector">
+                            {% for milk in milk_list%}
+                            <option>{{milk.name}}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="ingredient-section">
+                        <p>Toppings</p>
+                        <div id="ingredient-list">
+                        </div>
+                        <select name="ingredient" id="ingredient-selector">
+                            {% for topping in toppings_list %}
+                            <option>{{topping.name}}</option>
+                            {% endfor %}
+                        </select>
+                        <span>qty</span>
+                        <input id="amount-selector" type="number" min="1" max="9" value="1">
+                    </div>
+                    <div>
+                        <button onclick="addIngredient()">+</button>
+                    </div>
+                    <div>
+                        <button onclick="addToCart()">Add to Cart</button>
+                    </div>
+                    
+                    <script src="{% static 'menu/item_script.js' %}"></script>
+                    {% for ingredient, amount in drink.items %}
+                    {% if ingredient != "milk" %}
+                    <script>initIngredient("{{ingredient}}",{{amount}})</script>
+                    {% endif %}
+                    {% endfor %}
+                    <script>drawIngredients()</script>
+                </div>
+                <script>
+                    function addToCart() {
+                        fetch("{% url 'cart_add' %}", {
+                            method: "POST",
+                            redirect: "follow",
+                            headers: {'Content-Type': 'application/json'}, 
+                            body: JSON.stringify(ingredients)
+                        }).then(response => {
+                            window.location.href = response.url;
+                        })
+                    }
+                </script>
+            </div>
+        </body>
+    </html>

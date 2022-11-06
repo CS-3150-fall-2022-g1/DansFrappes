@@ -41,14 +41,42 @@ html, body {
 }
 
 
-#footer {
+.footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 1%;
   background-color: #0A2136;
   overflow: hidden;
   color: #ffffff
+}
+
+.footer h1{
+  padding: 1%;
+}
+
+
+.empeditbutton {
+  background: #8F8F8F;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 8px;
+  position: relative;
+}
+
+.usernameheader {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.wageentry {
+  margin:1%;
+  margin-bottom: 5%;
+  font-size: large;
+  text-align: center;
+  border-radius: 20px;
 }
 
 .textEntryDiv {
