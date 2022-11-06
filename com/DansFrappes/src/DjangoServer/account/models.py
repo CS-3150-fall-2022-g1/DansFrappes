@@ -14,6 +14,7 @@ class UserAccount(AbstractUser):
     hours_worked = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     employee = models.BooleanField(default=False)
     manager = models.BooleanField(default=False)
+    store = models.BooleanField(default=False)
 
 
     def setCustomer(self):
