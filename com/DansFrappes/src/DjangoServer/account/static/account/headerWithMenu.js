@@ -25,7 +25,7 @@ useraccountimage.style.position = "absolute";
 useraccountimage.style.left = "95%";
 useraccountimage.style.bottom = "5%";
 useraccountimage.onclick = function() {
-    window.location.href = '/account/view';
+    window.location.href = '/account/view/';
 };
 header.appendChild(useraccountimage);
 
@@ -38,9 +38,21 @@ homeicon.style.position = "absolute";
 homeicon.style.left = "90%";
 homeicon.style.bottom = "5%";
 homeicon.onclick = function() {
-    window.location.href = '/menu';
+    window.location.href = '/menu/';
 };
 header.appendChild(homeicon);
+
+
+var carticon = new Image(35, 35);;
+carticon.src = "/static/menu/carticon.png"
+carticon.style.position = "absolute";
+carticon.id = "menuimg";
+carticon.style.left = "85%";
+carticon.style.bottom = "5%";
+carticon.onclick = function() {
+    window.location.href = '/menu/cart/';
+};
+header.appendChild(carticon);
 
 bufferDiv = document.createElement("div");
 bufferDiv.id = "bufferdiv";
