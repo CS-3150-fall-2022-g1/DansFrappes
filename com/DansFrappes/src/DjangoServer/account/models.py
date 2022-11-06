@@ -8,10 +8,10 @@ class UserAccount(AbstractUser):
     #Add custom fields here
     
     birthday = models.DateField(default=None, blank=True, null=True)
-    funds = models.DecimalField(max_digits=6,decimal_places=2,default=0)
+    funds = models.DecimalField(max_digits=10,decimal_places=2,default=0)
     cart = models.JSONField(default=get_empty_order)
-    hourly_wage = models.DecimalField(max_digits=6, decimal_places=2, default=0)
-    hours_worked = models.DecimalField(max_digits=4, decimal_places=2, default=0)
+    hourly_wage = models.DecimalField(max_digits=9, decimal_places=2, default=0)
+    hours_worked = models.DecimalField(max_digits=6, decimal_places=2, default=0)
     employee = models.BooleanField(default=False)
     manager = models.BooleanField(default=False)
 
