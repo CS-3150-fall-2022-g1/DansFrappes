@@ -9,15 +9,39 @@
 <body>
     <script src="{% static 'employee/headerWithMenu.js' %}"></script>
     <div id="mainDiv">
-        <div class="itemDiv">
-            <h3>Caramel</h3>
-            <p>Current: 20</p>
+        <div class="left-column" style="height: 100%; width: 70%;">
             <div>
-                <p>Order: 0</p>
-                <button class="add">+</button>
-                <button class="subtract">-</button>
+                <table class="div-table">
+                    <th>
+                        <h3>Ingredient</h3>
+                    </th>
+                    <th>
+                        <p>Current: 20</p>
+                    </th>
+                    <th>
+                        <p>Order: 0</p>
+                    </th>
+                    <th>
+                        <button class="add">+</button>
+                        <button class="subtract">-</button>
+                    </th>
+            </table>
             </div>
-            <button>Submit</button>
+        </div>
+        <div class="right-column" style="height: 100%; width: 30%;">
+            <h1>Order</h1>
+            <p>
+                Ingredient   x##
+            </p>
+            <p>
+                Ingredient   x##
+            </p>
+            <p>
+                Ingredient   x##
+            </p>
+            <h3>
+                Total:   x##
+            </h3>
         </div>
     </div>
 </body>
