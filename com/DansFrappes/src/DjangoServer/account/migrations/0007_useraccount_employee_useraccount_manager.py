@@ -4,12 +4,7 @@ from django.db import migrations, models
 from account.models import UserAccount
 
 class Migration(migrations.Migration):
-    def add_admin(apps, schema_editor):
-        admin = UserAccount.objects.create_user("admin", "admin@gmail.com", "password")
-        admin.first_name = "admin"
-        admin.last_name = " "
-        admin.setManager()
-        admin.save()
+    
 
     dependencies = [
         ('account', '0006_alter_useraccount_hours_worked'),
@@ -26,5 +21,5 @@ class Migration(migrations.Migration):
             name='manager',
             field=models.BooleanField(default=False),
         ),
-        migrations.RunPython(add_admin),
+       
     ]
