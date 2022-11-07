@@ -64,6 +64,7 @@ def editWage(request):
         u.save()
     return redirect("/employee/")
 
+@csrf_exempt
 def fulfillOrder(request):
     if not isEmployee(request.user):
         return redirect("/menu/")
