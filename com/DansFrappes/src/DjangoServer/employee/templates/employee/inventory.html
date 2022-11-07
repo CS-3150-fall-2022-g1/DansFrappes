@@ -11,39 +11,44 @@
     <script src="{% static 'employee/headerWithMenu.js' %}"></script>
     <script>document.getElementById("h1Title").innerHTML="Inventory"</script>
     <div id="mainDiv">
-        <div class="left-column" style="height: 100%; width: 70%;">
+        <div class="left-column" style="height: 100%; width: 75%;">
             <div>
                 <table class="div-table">
                     <th>
-                        <h3>Ingredient</h3>
+                        <h2>Ingredient:</h2>
                     </th>
                     <th>
-                        <p>Current: 20</p>
+                        <h2>Current: 20</h2>
                     </th>
                     <th>
-                        <p>Order: 0</p>
+                        <h2>Order: 0</h2>
                     </th>
                     <th>
                         <button class="add">+</button>
+                    </th>
+                    <th>
                         <button class="subtract">-</button>
                     </th>
             </table>
             </div>
         </div>
-        <div class="right-column" style="height: 100%; width: 30%;">
-            <h1>Order</h1>
-            <p>
-                Ingredient   x##
-            </p>
-            <p>
-                Ingredient   x##
-            </p>
-            <p>
-                Ingredient   x##
-            </p>
+        <div class="right-column" style="height: 100vh; width: 25%;">
+            <u><h1>Order</h1></u>
             <h3>
-                Total:   x##
+                Ingredient   x##
             </h3>
+            <h3>
+                Ingredient   x##
+            </h3>
+            <h3>
+                Ingredient   x##
+            </h3>
+            <h2>
+                Total:   x##
+            </h2>
+            <button class="action-button" style="background-color: #8F8F8F; color: white;">
+                Buy
+            </button>
         </div>
     </div>
 </body>
