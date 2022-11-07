@@ -2,8 +2,17 @@
 
 from django.db import migrations, models
 
+from account.models import UserAccount
+
 
 class Migration(migrations.Migration):
+    def add_admin(apps, schema_editor):
+        admin = UserAccount.objects.create_user("admin", "admin@gmail.com", "password")
+        admin.first_name = "admin"
+        admin.last_name = " "
+        admin.setManager()
+        admin.store = True
+        admin.save()
 
     dependencies = [
         ('account', '0009_alter_useraccount_funds_and_more'),
@@ -15,4 +24,5 @@ class Migration(migrations.Migration):
             name='store',
             field=models.BooleanField(default=False),
         ),
+        migrations.RunPython(add_admin),
     ]
