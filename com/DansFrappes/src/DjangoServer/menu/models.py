@@ -24,6 +24,8 @@ class Ingredient(models.Model):
 class DrinkPreset(models.Model):
     name = models.CharField(max_length=20)
     order = models.JSONField()
+    # description = models.TextField()
+    # image = models.ImageField()
 
 class MilkIngredient(Ingredient):
     pass

@@ -19,10 +19,12 @@ def add_drinks(apps, schema_editor):
         'milk':"Whole"
     })
     drink3.save()
-    drink4= DrinkPreset(name='The Reagan', order={
-        'Chocolate':2,
-        'milk':"Whole"
-    })
+    drink4= DrinkPreset(
+        name='The Reagan', 
+        order={
+            'Chocolate':2,
+            'milk':"Whole"
+        })
     drink4.save()
     drink5= DrinkPreset(name='The Dan', order={
         'Chocolate':2,
