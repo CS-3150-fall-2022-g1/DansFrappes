@@ -5,7 +5,7 @@ from account.models import UserAccount
 from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_exempt
 
-from menu.models import Order
+from menu.models import Order, Ingredient
 
 
 
@@ -13,7 +13,8 @@ def inventory(request):
     page_title = 'Inventory'
     employee = isEmployee(request.user)
     manager = isManager(request.user)
-    return render(request, 'employee/inventory.html', {'page_title': page_title, 'employee':employee, 'manager':manager})
+    ingredients = Ingredient.objects.values()
+    return render(request, 'employee/inventory.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'ingredients':ingredients})
 
 def queue(request):
     page_title = 'Order Queue'

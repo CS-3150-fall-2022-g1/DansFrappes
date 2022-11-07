@@ -11,44 +11,48 @@
     <script src="{% static 'employee/headerWithMenu.js' %}"></script>
     <script>document.getElementById("h1Title").innerHTML="Inventory"</script>
     <div id="mainDiv">
-        <div class="left-column" style="height: 100%; width: 75%;">
-            <div>
-                <table class="div-table">
-                    <th>
-                        <h2>Ingredient:</h2>
-                    </th>
-                    <th>
-                        <h2>Current: 20</h2>
-                    </th>
-                    <th>
-                        <h2>Order: 0</h2>
-                    </th>
-                    <th>
-                        <button class="add">+</button>
-                    </th>
-                    <th>
-                        <button class="subtract">-</button>
-                    </th>
+        <div class="left-column-inventory">
+            <table class="div-table">
+                {% for ingredient in ingredients%}
+                <tr>
+                <td>
+                    <h2>Ingredient: {{ingredient.name}}</h2>
+                </td>
+                <td>
+                    <h2>Current: {{ingredient.stock}}</h2>
+                </td>
+                <td>
+                    <h2>Order: 0</h2>
+                </td>
+                <td style="text-align: right;">
+                    <button class="add">+</button>
+                </td>
+                <td>
+                    <button class="subtract">-</button>
+                </td>
+                </tr>
+                {% endfor %}
             </table>
-            </div>
         </div>
-        <div class="right-column" style="height: 100vh; width: 25%;">
-            <u><h1>Order</h1></u>
-            <h3>
-                Ingredient   x##
-            </h3>
-            <h3>
-                Ingredient   x##
-            </h3>
-            <h3>
-                Ingredient   x##
-            </h3>
-            <h2>
-                Total:   x##
-            </h2>
-            <button class="action-button" style="background-color: #8F8F8F; color: white;">
-                Buy
-            </button>
+        <div class="right-column-inventory">
+            <form method="POST", action="">
+                <u><h1>Order</h1></u>
+                <h3>
+                    Ingredient   x##
+                </h3>
+                <h3>
+                    Ingredient   x##
+                </h3>
+                <h3>
+                    Ingredient   x##
+                </h3>
+                <h2>
+                    Total:   x##
+                </h2>
+                <button class="action-button" style="background-color: #8F8F8F; color: white;">
+                    Buy
+                </button>
+            </form>
         </div>
     </div>
 </body>
