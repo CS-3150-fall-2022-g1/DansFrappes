@@ -13,19 +13,19 @@
     <div id="mainDiv">
         <div class="left-column-inventory">
             <table class="div-table">
-                {% for ingredient in ingredients%}
+                {% for ingredient in ingredients %}
                 <tr>
                 <td>
-                    <h2>Ingredient: {{ingredient.name}}</h2>
+                    <h2>Ingredient: {{ ingredient.name }}</h2>
                 </td>
                 <td>
-                    <h2>Current: {{ingredient.stock}}</h2>
+                    <h2>Current: {{ ingredient.stock }}</h2>
                 </td>
                 <td>
-                    <h2>Order: 0</h2>
+                    <h2>Order: {{ ordering }}</h2>
                 </td>
                 <td style="text-align: right;">
-                    <button class="add">+</button>
+                    <button class="add" onclick="console.log(addToOrdering({{ingredient.count}}))">+</button>
                 </td>
                 <td>
                     <button class="subtract">-</button>
@@ -55,4 +55,5 @@
             </form>
         </div>
     </div>
+    <script src="{% static 'employee/inventory.js' %}"></script>
 </body>

@@ -4,7 +4,7 @@ header.id = "headerDiv";
 document.body.appendChild(header);
 
 h1_1 = document.createElement("h1");
-h1_1.innerHTML = "Dan's Frapps";
+h1_1.innerHTML = "Dan's Frappes";
 header.appendChild(h1_1);
 
 bufferDiv = document.createElement("div");
