@@ -7,62 +7,40 @@
     <link href="{% static 'employee/style.css' %}" rel="stylesheet">
 </head>
 <body style="background-color: #D9D9D9;">
+    <script>const manager = "{{ manager }}"; const employee = "{{ employee }}";</script>
     <script src="{% static 'employee/headerWithMenu.js' %}"></script>
+    <script>document.getElementById("h1Title").innerHTML="Employees"</script>
     <div id="mainDivGrey">
+        <form method="post" action="/employee/payemployees/">
+            <input type="submit" value="Pay All Employees" class="submitbutton">
+        </form>
+        {% for e in empList %}
         <div class="itemDiv row">
             <table class="div-table">
                 <th>
-                    <h3>Username 1</h3>
+                    <h3>{{ e.first_name }} {{ e.last_name }}</h3>
                 </th>
                 <th>
-                    <p>Hours Worked: ##</p>
+                    <p>Hours Worked: {{ e.hours_worked }}</p>
                 <th>
-                <button class="action-button">Pay</button>
-                <button class="action-button">Edit</button>
+                <form method="post" action="/employee/payemployee/">
+                    <input type="number" value="{{ e.id }}" style="display: none;" name="user_idx" id="user_idx">
+                    <input type="submit" value="Pay" class="empeditbutton">
+                </form>
+                <button class="empeditbutton" onclick="showEdit({{ e.id }})" id="editbutton{{ e.id }}" style="display: inline;">Edit</button>
+                <form method="post" action="/employee/editemployee/" style="display: none;" id="editForm{{ e.id }}">
+                    <input type="number" value="{{ e.id }}" style="display: none;" name="user_idx" id="user_idx">
+                    <p>Hourly Wage: <input type="number" value="{{ e.hourly_wage }}" name="hourlywage" id="hourlywage" step=".01" class="wageentry"></p>
+                    <input type="submit" value="Confirm" class="empeditbutton">
+                </form>
+                <button class="empeditbutton" onclick="hideEdit({{ e.id }})" id="cancelbutton{{ e.id }}" style="display: none;">Cancel</button>
                 </th>
             </table>    
         </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 2</h3>
-                </th>
-                <th>
-                    <p>Hours Worked: ##</p>
-                <th>
-                <button class="action-button">Pay</button>
-                <button class="action-button">Edit</button>
-                </th>
-            </table>
-        </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 3</h3>
-                </th>
-                <th>
-                    <p>Hours Worked: ##</p>
-                <th>
-                <button class="action-button">Pay</button>
-                <button class="action-button">Edit</button>
-                </th>
-            </table>
-        </div>
-        <div class="itemDiv row">
-            <table class="div-table">
-                <th>
-                    <h3>Username 4</h3>
-                </th>
-                <th>
-                    <p>Hours Worked: ##</p>
-                <th>
-                <button class="action-button">Pay</button>
-                <button class="action-button">Edit</button>
-                </th>
-            </table>
-        </div>
+        {% endfor %}
     </div>
-    <div id="footer">
+    <div class="footer">
         <h1>Dan's Frappes</h1>
     </div>
+    <script src="{% static 'employee/employee.js' %}"></script>
 </body>
