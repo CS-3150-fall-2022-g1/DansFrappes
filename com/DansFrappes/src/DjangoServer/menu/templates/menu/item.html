@@ -11,15 +11,15 @@
 	</head>
         <body>
             <div class="container">
-                <div class="grid_item">
-                    <img src="homeIcon.png">
+                <div class="grid_item itemDiv">
+                    <img src="/static/menu/Frappe-1.webp" width="455" height="455">
                 </div>
-                <div class="grid_item">
+                <div class="grid_item itemDiv">
                     <div>
                         <p>description</p>
                     </div>
                     <div class="milk_row">
-                        <p>Milk</p>
+                        <h2>Milk</h2>
                         <select name="milk" id="milk-selector">
                             {% for milk in milk_list%}
                             <option>{{milk.name}}</option>
@@ -27,7 +27,7 @@
                         </select>
                     </div>
                     <div class="ingredient-section">
-                        <p>Toppings</p>
+                        <h2>Toppings</h2>
                         <div id="ingredient-list">
                         </div>
                         <select name="ingredient" id="ingredient-selector">
