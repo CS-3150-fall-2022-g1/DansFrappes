@@ -11,15 +11,48 @@
     <script src="{% static 'employee/headerWithMenu.js' %}"></script>
     <script>document.getElementById("h1Title").innerHTML="Inventory"</script>
     <div id="mainDiv">
-        <div class="itemDiv">
-            <h3>Caramel</h3>
-            <p>Current: 20</p>
-            <div>
-                <p>Order: 0</p>
-                <button class="add">+</button>
-                <button class="subtract">-</button>
-            </div>
-            <button>Submit</button>
+        <div class="left-column-inventory">
+            <table class="div-table">
+                {% for ingredient in ingredients%}
+                <tr>
+                <td>
+                    <h2>Ingredient: {{ingredient.name}}</h2>
+                </td>
+                <td>
+                    <h2>Current: {{ingredient.stock}}</h2>
+                </td>
+                <td>
+                    <h2>Order: 0</h2>
+                </td>
+                <td style="text-align: right;">
+                    <button class="add">+</button>
+                </td>
+                <td>
+                    <button class="subtract">-</button>
+                </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="right-column-inventory">
+            <form method="POST", action="">
+                <u><h1>Order</h1></u>
+                <h3>
+                    Ingredient   x##
+                </h3>
+                <h3>
+                    Ingredient   x##
+                </h3>
+                <h3>
+                    Ingredient   x##
+                </h3>
+                <h2>
+                    Total:   x##
+                </h2>
+                <button class="action-button" style="background-color: #8F8F8F; color: white;">
+                    Buy
+                </button>
+            </form>
         </div>
     </div>
 </body>
