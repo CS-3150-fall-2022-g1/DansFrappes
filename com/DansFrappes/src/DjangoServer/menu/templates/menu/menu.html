@@ -13,6 +13,7 @@
 	<body>
 		<script>const manager = "{{ manager }}"; const employee = "{{ employee }}";</script>
 		<script src="{% static 'menu/headerWithMenu.js' %}"></script>
+		<script> h1_1.innerHTML = "Menu"</script>
 		<script src="{% static 'menu/script.js' %}"></script>
 		<div class="container">
 			{% for item in item_list %}

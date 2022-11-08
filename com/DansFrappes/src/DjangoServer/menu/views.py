@@ -18,7 +18,9 @@ def view_item(request, item):
   drink = get_object_or_404(DrinkPreset, name=item)
   milk_list = MilkIngredient.objects.all()
   toppings_list = Ingredient.objects.filter()
-  return render(request, 'menu/item.html', {'name':drink.name, 'drink':drink.order, 'milk_list':milk_list, 'toppings_list':toppings_list})
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
+  return render(request, 'menu/item.html', {'name':drink.name, 'drink':drink.order, 'milk_list':milk_list, 'toppings_list':toppings_list, 'employee':employee, 'manager':manager})
 
 @csrf_exempt
 @login_required
