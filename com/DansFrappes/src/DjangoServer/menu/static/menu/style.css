@@ -202,7 +202,35 @@ width: 40px;
   background-color: #ffffff;
   color: black;
   font-size: 24px;
+  margin:10px;
+  height:25%;
+}
+
+.cost {
+  text-align: right;
+  margin-right: 10px;
+  font-family: monospace;
+}
+
+.total {
+  text-align: right;
+  font-size: 24px;
   border-radius: 8px;
   margin:10px;
   height:25%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.cart_button {
+  text-align: right;
+  margin:10px;
+  border-radius: 8px;
+  height:25%;
+}
+
+.receipt-ingredient {
+  text-align: left;
 }
