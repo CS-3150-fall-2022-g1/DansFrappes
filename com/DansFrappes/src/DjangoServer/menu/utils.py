@@ -1,5 +1,8 @@
 from .models import Ingredient, Order, DrinkPreset, MilkIngredient
 
+milk_markup = 4
+other_markup = 1.6
+
 def place_order(user):
     total = 0
 
@@ -10,8 +13,9 @@ def place_order(user):
         for key, value in item.items():
             if key == 'milk':
                 ingredient = MilkIngredient.objects.get(name=value)
+                total += ingredient.buy_cost * milk_markup * value
             ingredient = Ingredient.objects.get(name=key)
-            total += ingredient.sell_cost * value
+            total += ingredient.buy_cost * other_markup * value
 
     order = Order(user=user, order=user.cart, total=total)
     order.save()
