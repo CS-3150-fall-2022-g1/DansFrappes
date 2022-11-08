@@ -14,25 +14,25 @@
 		<script>const manager = "{{ manager }}"; const employee = "{{ employee }}";</script>
 		<script src="{% static 'menu/headerWithMenu.js' %}"></script>
 		<script src="{% static 'menu/script.js' %}"></script>
-		<div>
+		<div class="container">
 			<div class="grid_item itemDiv">
 				<h1>Cart Summary</h1>
 			</div>
 			<div class="grid_item itemDiv">
 				{% for drink in order.items %}
 				<div class="receipt">
-					<p>{{ drink.name }}</p>
+					<p class="cost">{{ drink.name }}</p>
 					<ul>
 						{% for ingredients in drink.ingredients %}
-						<li class="cost">{{ ingredients.name }} | {{ ingredients.cost }}</li>
+						<li class="cost">{{ ingredients.name }} | ${{ ingredients.cost }}</li>
 						{% endfor %}
 					</ul>
-					<p>Total: {{ drink.total }}</p>
-				<div>
+					<p class="total">Total: ${{ drink.total }}</p>
+				</div>
 				{% endfor %}
-				<p>Order Total: {{ order.total }}</p>
+				<p class="total">Order Total: ${{ order.total }}</p>
 			</div>
-            <form method="post" action="" style="float: right;"><button type="submit">Place Order</button></form>
 		</div>
+		<form class="cart_button" method="post" action=""><button type="submit">Place Order</button></form>
 	</body>
 </html>
