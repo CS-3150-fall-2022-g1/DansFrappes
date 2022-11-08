@@ -1,3 +1,4 @@
+from account.models import UserAccount
 from .models import Ingredient, Order, DrinkPreset, MilkIngredient
 from decimal import Decimal
 
@@ -19,11 +20,19 @@ def place_order(user):
             else:
                 ingredient = Ingredient.objects.get(name=key)
                 total += ingredient.buy_cost * other_markup * Decimal(value)
-                
-    order = Order(user=user, order=user.cart, total=total)
-    order.save()
-    user.cart = get_empty_order()
-    user.save()
+    
+    if user.funds > total:
+        order = Order(user=user, order=user.cart, total=total)
+        
+        user.cart = get_empty_order()
+        user.funds -= total 
+        
+        storeaccount = UserAccount.objects.get(store=True)
+        storeaccount.funds += total
+
+        user.save()
+        order.save()
+        storeaccount.save()
 
 def add_item_to_cart(user, item):
     '''

@@ -40,10 +40,14 @@ def view_cart(request):
     place_order(request.user)
     print('HI!')
     return redirect('/menu/confirm', )
-  return render(request, 'menu/cart.html', {'order':make_summary(request.user)}) 
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
+  return render(request, 'menu/cart.html', {'order':make_summary(request.user), 'employee':employee, 'manager':manager}) 
 
 
 @login_required
 def view_confirm(request):
-  return render(request, 'menu/confirm.html')
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
+  return render(request, 'menu/confirm.html', {'employee':employee, 'manager':manager})
 # Create your views here.
