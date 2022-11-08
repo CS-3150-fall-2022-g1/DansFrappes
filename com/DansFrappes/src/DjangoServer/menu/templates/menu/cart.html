@@ -15,22 +15,22 @@
 		<script src="{% static 'menu/headerWithMenu.js' %}"></script>
 		<script src="{% static 'menu/script.js' %}"></script>
 		<div>
-			<div class="grid_item itemDiv" style="float: left;">
+			<div class="grid_item itemDiv">
 				<h1>Cart Summary</h1>
 			</div>
 			<div class="grid_item itemDiv">
-				{{ for drinks in cart}}
+				{% for drink in order.items %}
 				<div class="receipt">
-					<ol>
-						{{ for addin, price in order}}
-						<p>order.name</p>
-						<li>{{ addin }} | {{ price }}</li>
-						<p>order.total</p>
-						{{ endfor }}
-					</ol>
+					<p>{{ drink.name }}</p>
+					<ul>
+						{% for ingredients in drink.ingredients %}
+						<li class="cost">{{ ingredients.name }} | {{ ingredients.cost }}</li>
+						{% endfor %}
+					</ul>
+					<p>Total: {{ drink.total }}</p>
 				<div>
-				{{ endfor }}
-				<p>Order Total: {{ cart.total }}</p>
+				{% endfor %}
+				<p>Order Total: {{ order.total }}</p>
 			</div>
             <form method="post" action="" style="float: right;"><button type="submit">Place Order</button></form>
 		</div>

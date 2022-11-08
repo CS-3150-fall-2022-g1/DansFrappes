@@ -40,7 +40,7 @@ def view_cart(request):
     place_order(request.user)
     print('HI!')
     return redirect('/menu/confirm', )
-  return render(request, 'menu/cart.html', make_summary(request.user)) 
+  return render(request, 'menu/cart.html', {'order':make_summary(request.user)}) 
 
 
 @login_required
