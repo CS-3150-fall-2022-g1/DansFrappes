@@ -25,6 +25,7 @@ def add_drinks(apps, schema_editor):
         'milk':"Whole"
     })
     drink3.save()
+    
     drink4= DrinkPreset(name='The Reagan', order={
         'name':'The Reagan',
         'description':'TODO',

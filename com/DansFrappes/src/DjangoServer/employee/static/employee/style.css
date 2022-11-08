@@ -124,6 +124,7 @@ font-size: 24px;
 border-radius: 8px;
 height: 30px;
 width: 40px;
+border: none;
 }
 
 .subtract {
@@ -133,6 +134,8 @@ font-size: 24px;
 border-radius: 8px;
 height: 30px;
 width: 40px;
+text-align: center;
+border: none;
 }
 
 .left-column{ 
@@ -229,6 +232,7 @@ width: 40px;
   margin-left: auto;
   margin-right: auto;
   width: 100%;
+  padding: 1%;
 }
 
 .action-button{
@@ -241,6 +245,21 @@ width: 40px;
   color: #0A2136;
   font-size: large;
   font-weight: bold;
+}
+
+.left-column-inventory{ 
+	float:left; 
+  color:#8F8F8F;
+  height: 100%;
+  width: 75%;
+} 
+
+.right-column-inventory{ 
+	float: right; 
+  background: #D9D9D9;
+  height: 100%; 
+  width: 25%;
+  text-align: center;
 }
 
 th{

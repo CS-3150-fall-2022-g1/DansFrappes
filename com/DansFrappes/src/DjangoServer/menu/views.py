@@ -31,6 +31,7 @@ def add_to_cart(request):
       return redirect('/menu')
     else:
       return JsonResponse({'Error':True})
+  redirect("menu/cart/")
 
 @csrf_exempt
 @login_required
@@ -40,6 +41,7 @@ def view_cart(request):
     print('HI!')
     return redirect('/menu/confirm', )
   return render(request, 'menu/cart.html', make_summary(request.user)) 
+
 
 @login_required
 def view_confirm(request):

@@ -31,6 +31,5 @@ class MilkIngredient(models.Model):
     # image = 
     name = models.CharField(max_length=15)
     stock = models.IntegerField()
-
-    # These costs cannot be above $99.99 per ingredient
+     # These costs cannot be above $99.99 per ingredient
     buy_cost = models.DecimalField(max_digits=4, decimal_places=2, default=0)
