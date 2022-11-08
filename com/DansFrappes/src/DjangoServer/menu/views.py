@@ -29,9 +29,7 @@ def add_to_cart(request):
     
     if add_item_to_cart(request.user, item):
       return redirect('/menu')
-    else:
-      return JsonResponse({'Error':True})
-  redirect("menu/cart/")
+  return redirect("/menu/cart/")
 
 @csrf_exempt
 @login_required
