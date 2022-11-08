@@ -24,7 +24,14 @@
 					<p class="cost">{{ drink.name }}</p>
 					<ul>
 						{% for ingredients in drink.ingredients %}
-						<li class="cost">{{ ingredients.name }} | ${{ ingredients.cost }}</li>
+						<div class="container">
+							<div class="receipt-ingredient grid_item">
+								<p>{{ ingredients.name }}<p>
+							</div>
+							<div class="cost grid_item">
+								<p>${{ingredients.cost}}<p>
+							</div>
+						</div>
 						{% endfor %}
 					</ul>
 					<p class="total">Total: ${{ drink.total }}</p>

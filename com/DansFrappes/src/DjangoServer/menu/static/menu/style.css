@@ -207,7 +207,9 @@ width: 40px;
 }
 
 .cost {
-  text-align: left;
+  text-align: right;
+  margin-right: 10px;
+  font-family: monospace;
 }
 
 .total {
@@ -227,4 +229,8 @@ ul {
   margin:10px;
   border-radius: 8px;
   height:25%;
+}
+
+.receipt-ingredient {
+  text-align: left;
 }
