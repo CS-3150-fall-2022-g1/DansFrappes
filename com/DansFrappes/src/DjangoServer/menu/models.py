@@ -18,14 +18,18 @@ class Ingredient(models.Model):
     stock = models.IntegerField()
 
     # These costs cannot be above $99.99 per ingredient
-    buy_cost = models.DecimalField(max_digits=4, decimal_places=2)
-    sell_cost = models.DecimalField(max_digits=4, decimal_places=2)
+    buy_cost = models.DecimalField(max_digits=4, decimal_places=2, default=0)
 
 class DrinkPreset(models.Model):
     name = models.CharField(max_length=20)
     order = models.JSONField()
-    # description = models.TextField()
-    # image = models.ImageField()
+    description = models.TextField(max_length=75, default="TODO: ADD DESCRIPTION")
+    image = models.URLField(default="/menu/images/missing")
 
-class MilkIngredient(Ingredient):
-    pass
+class MilkIngredient(models.Model):
+    ''' Model for the inventory table. '''
+    # image = 
+    name = models.CharField(max_length=15)
+    stock = models.IntegerField()
+     # These costs cannot be above $99.99 per ingredient
+    buy_cost = models.DecimalField(max_digits=4, decimal_places=2, default=0)

@@ -16,7 +16,7 @@
                 </div>
                 <div class="grid_item itemDiv">
                     <div>
-                        <p>description</p>
+                        <p>{{drink.description}}</p>
                     </div>
                     <div class="milk_row">
                         <h2>Milk</h2>
@@ -55,6 +55,8 @@
                 </div>
                 <script>
                     function addToCart() {
+                        ingredients['milk'] = milkSelector.value
+                        ingredients['name'] = "{{ name }}"
                         fetch("{% url 'cart_add' %}", {
                             method: "POST",
                             redirect: "follow",
