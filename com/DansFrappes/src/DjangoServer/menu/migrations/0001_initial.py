@@ -28,16 +28,15 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=15)),
                 ('stock', models.IntegerField()),
-                ('buy_cost', models.DecimalField(decimal_places=2, max_digits=4)),
-                ('sell_cost', models.DecimalField(decimal_places=2, max_digits=4)),
-            ],
+                ('buy_cost', models.DecimalField(decimal_places=2, max_digits=4))],
         ),
         migrations.CreateModel(
             name='MilkIngredient',
             fields=[
-                ('ingredient_ptr', models.OneToOneField(auto_created=True, on_delete=django.db.models.deletion.CASCADE, parent_link=True, primary_key=True, serialize=False, to='menu.ingredient')),
-            ],
-            bases=('menu.ingredient',),
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('name', models.CharField(max_length=15)),
+                ('stock', models.IntegerField()),
+                ('buy_cost', models.DecimalField(decimal_places=2, max_digits=4))],
         ),
         migrations.CreateModel(
             name='Order',

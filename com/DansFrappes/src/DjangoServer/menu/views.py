@@ -4,7 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from django.template import loader
 from .models import DrinkPreset, Ingredient, MilkIngredient
-from .utils import get_menu, add_item_to_cart, place_order
+from .utils import get_menu, add_item_to_cart, place_order, make_summary
 from django.db.models import Q
 from account.utils import isEmployee, isManager
 import json
@@ -17,7 +17,7 @@ def index(request):
 def view_item(request, item):
   drink = get_object_or_404(DrinkPreset, name=item)
   milk_list = MilkIngredient.objects.all()
-  toppings_list = Ingredient.objects.all()
+  toppings_list = Ingredient.objects.filter()
   return render(request, 'menu/item.html', {'name':drink.name, 'drink':drink.order, 'milk_list':milk_list, 'toppings_list':toppings_list})
 
 @csrf_exempt
@@ -39,8 +39,8 @@ def view_cart(request):
   if request.method == 'POST':
     place_order(request.user)
     print('HI!')
-    return redirect('/menu/confirm')
-  return render(request, 'menu/cart.html') 
+    return redirect('/menu/confirm', )
+  return render(request, 'menu/cart.html', make_summary(request.user)) 
 
 
 @login_required
