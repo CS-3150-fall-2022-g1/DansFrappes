@@ -23,6 +23,8 @@ class Ingredient(models.Model):
 class DrinkPreset(models.Model):
     name = models.CharField(max_length=20)
     order = models.JSONField()
+    description = models.TextField(max_length=75, default="TODO: ADD DESCRIPTION")
+    image = models.URLField(default="/menu/images/missing")
 
 class MilkIngredient(models.Model):
     ''' Model for the inventory table. '''

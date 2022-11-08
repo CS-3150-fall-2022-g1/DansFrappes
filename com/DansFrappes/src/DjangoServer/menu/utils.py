@@ -11,12 +11,14 @@ def place_order(user):
     
     for item in user.cart.get('items'):
         for key, value in item.items():
+            ingredient = None
             if key == 'milk':
                 ingredient = MilkIngredient.objects.get(name=value)
                 total += ingredient.buy_cost * milk_markup * value
-            ingredient = Ingredient.objects.get(name=key)
-            total += ingredient.buy_cost * other_markup * value
-
+            else:
+                ingredient = Ingredient.objects.get(name=key)
+                total += ingredient.buy_cost * other_markup * value
+                
     order = Order(user=user, order=user.cart, total=total)
     order.save()
     user.cart = get_empty_order()
@@ -52,3 +54,43 @@ def get_menu():
 
 def get_unfulfilled():
     return Order.objects.get(fulfilled=False).order_by('-time')
+
+def make_summary(user):
+    summary = {'items':[]}
+    total = 0
+
+    for order in user.cart['items']:
+        sum = make_item_summary(order)
+        total += sum[0]
+        summary['items'].append(sum)[1]
+
+    summary['total': total]
+    return summary
+
+def make_item_summary(order):
+    total = 0
+    summary = {
+        'name': order.get('name'),
+        'ingredients':[]
+    }
+
+    for key, value in order.items():
+        item = {}
+        ingredient = None
+        cost = 0
+        amount = 1
+        if key=="milk":
+            ingredient = MilkIngredient.objects.get(name=value)
+            cost = ingredient.buy_cost * milk_markup
+        else:
+            ingredient = Ingredient.objects.get(name=key)
+            cost = ingredient.buy_cost * other_markup
+            amount = value
+        item['cost'] = cost
+        item['name'] = ingredient.name
+        item['amount'] = amount
+        summary['ingredients'].append(item)
+        total += cost
+
+    summary['total'] = total
+    return [total, summary,]
