@@ -191,8 +191,14 @@ width: 40px;
   flex-grow: 1;
   flex-basis: auto;
   border-radius: 8px;
+  flex-direction: row;
 }
 
 #ingredient-template {
   visibility: hidden;
+}
+
+.receipt {
+  background-color: #ffffff;
+  text-align: center;
 }
