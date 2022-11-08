@@ -5,7 +5,7 @@ from menu.utils import get_empty_order
 
 # Create your models here.
 class UserAccount(AbstractUser):
-    #Add custom fields here
+    # Add custom fields here
     
     birthday = models.DateField(default=None, blank=True, null=True)
     funds = models.DecimalField(max_digits=10,decimal_places=2,default=0)
@@ -65,7 +65,11 @@ class UserAccount(AbstractUser):
         return self
 
     def pay(self):
-        self.funds += self.hourly_wage * self.hours_worked
+        storeaccount = UserAccount.objects.get(store=True)
+        amount = self.hourly_wage * self.hours_worked
+        storeaccount.funds -= amount
+        storeaccount.save()
+        self.funds += amount
         self.hours_worked = 0.0
         self.save()
         return self
