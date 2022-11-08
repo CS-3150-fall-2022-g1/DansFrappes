@@ -21,23 +21,25 @@ class UserAccount(AbstractUser):
         """
         Remove this user from groups. This is only needed when removing permissions from an employee.
         """
-        self.groups.clear()
-        self.manager = False
-        self.employee = False
-        self.save()
+        if not self.store:
+            self.groups.clear()
+            self.manager = False
+            self.employee = False
+            self.save()
         return self
 
     def setEmployee(self):
         """
         Move this user to the 'employee' group
         """
-        self.groups.clear()
-        group = Group.objects.get(name="employee")
-        self.groups.add(group)
-        self.hourly_wage = 15.00
-        self.employee = True
-        self.manager = False
-        self.save()
+        if not self.store:
+            self.groups.clear()
+            group = Group.objects.get(name="employee")
+            self.groups.add(group)
+            self.hourly_wage = 15.00
+            self.employee = True
+            self.manager = False
+            self.save()
         return self
 
     def isEmployee(self):
@@ -50,15 +52,16 @@ class UserAccount(AbstractUser):
         """
         Move this user to the 'manager' group
         """
-        self.groups.clear
-        employeeGroup = Group.objects.get(name="employee")
-        managerGroup = Group.objects.get(name="manager")
-        self.groups.add(employeeGroup)
-        self.groups.add(managerGroup)
-        self.hourly_wage = 400.00
-        self.manager = True
-        self.employee = True
-        self.save()
+        if not self.store:
+            self.groups.clear
+            employeeGroup = Group.objects.get(name="employee")
+            managerGroup = Group.objects.get(name="manager")
+            self.groups.add(employeeGroup)
+            self.groups.add(managerGroup)
+            self.hourly_wage = 400.00
+            self.manager = True
+            self.employee = True
+            self.save()
         return self
 
     def pay(self):
