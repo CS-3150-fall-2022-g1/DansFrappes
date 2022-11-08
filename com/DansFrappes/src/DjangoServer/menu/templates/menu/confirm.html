@@ -15,7 +15,11 @@
 		<script src="{% static 'menu/headerWithMenu.js' %}"></script>
 		<script src="{% static 'menu/script.js' %}"></script>
 		<div>
-			<h2>Thank you for your order!</h2>
+			{% if confirmed %}
+			<h2 style="padding: 5%;">Thank you for your order!</h2>
+			{% else %}
+			<h2 style="padding: 5%;">Insufficient Funds.</h2>
+			{% endif %}
         </div>
 	</body>
 </html>

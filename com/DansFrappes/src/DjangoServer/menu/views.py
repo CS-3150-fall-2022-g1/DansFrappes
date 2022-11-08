@@ -36,12 +36,11 @@ def add_to_cart(request):
 @csrf_exempt
 @login_required
 def view_cart(request):
-  if request.method == 'POST':
-    place_order(request.user)
-    print('HI!')
-    return redirect('/menu/confirm', )
   employee = isEmployee(request.user)
   manager = isManager(request.user)
+  if request.method == 'POST':
+    confirm = place_order(request.user)
+    return render(request, 'menu/confirm.html', {'employee':employee, 'manager':manager, 'confirmed': confirm})
   return render(request, 'menu/cart.html', {'order':make_summary(request.user), 'employee':employee, 'manager':manager}) 
 
 
