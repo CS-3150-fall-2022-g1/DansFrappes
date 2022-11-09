@@ -9,6 +9,7 @@ urlpatterns = [
     path('fulfillorder/', views.fulfillOrder, name='fulfil'),
     path('editemployee/', views.editWage, name='edit'),
     path('', views.employee, name='employee'),
+    path('buy/', views.buy, name='buy')
 
 
 ]

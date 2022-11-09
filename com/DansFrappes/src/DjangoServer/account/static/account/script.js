@@ -1,4 +1,4 @@
-document.title = "Dan's Frapp's - Login";
+document.title = "Dan's Frappe's - Login";
 
 const loginDiv = document.createElement("div");
 loginDiv.id = "loginDiv";
