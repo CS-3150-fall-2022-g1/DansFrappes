@@ -22,13 +22,13 @@
                     <h2>Current: {{ ingredient.stock }}</h2>
                 </td>
                 <td>
-                    <h2>Order: {{ ordering }}</h2>
+                    <h2>Order: <b id="icount{{ingredient.name}}">0</b></h2>
                 </td>
                 <td style="text-align: right;">
-                    <button class="add" onclick="console.log(addToOrdering({{ingredient.count}}))">+</button>
+                    <button class="add" onclick="addToOrdering('{{ingredient.name}}')">+</button>
                 </td>
                 <td>
-                    <button class="subtract">-</button>
+                    <button class="subtract" onclick="subFromOrdering('{{ingredient.name}}')">-</button>
                 </td>
                 </tr>
                 {% endfor %}
