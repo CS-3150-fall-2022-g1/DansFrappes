@@ -28,7 +28,7 @@
                     <input type="submit" value="Hire" class="empeditbutton">
                 </form>
                 {% endif %}
-                {% if u.employee and u.id != user.id %}
+                {% if u.employee and not u.store %}
                 <form method="post" action="/account/fireuser/">
                     <input type="number" value="{{ u.id }}" style="display: none;" name="user_idx" id="user_idx">
                     <input type="submit" value="Fire" class="empeditbutton">

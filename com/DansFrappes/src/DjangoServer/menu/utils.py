@@ -1,3 +1,4 @@
+from account.models import UserAccount
 from .models import Ingredient, Order, DrinkPreset, MilkIngredient
 from decimal import Decimal
 
@@ -14,16 +15,34 @@ def place_order(user):
         for key, value in item.items():
             ingredient = None
             if key == 'milk':
-                ingredient = MilkIngredient.objects.get(name=value)
-                total += ingredient.buy_cost * milk_markup
+                try:
+                    ingredient = MilkIngredient.objects.get(name=value)
+                    total += ingredient.buy_cost * milk_markup
+                except:
+                    print(key, value , "Not in Ingredient Database")
             else:
-                ingredient = Ingredient.objects.get(name=key)
-                total += ingredient.buy_cost * other_markup * Decimal(value)
-                
-    order = Order(user=user, order=user.cart, total=total)
-    order.save()
-    user.cart = get_empty_order()
-    user.save()
+                try:
+                    ingredient = Ingredient.objects.get(name=key)
+                    total += ingredient.buy_cost * other_markup * Decimal(value)
+                except:
+                    print(key, value , "Not in Ingredient Database")
+    
+    if user.funds > total:
+        order = Order(user=user, order=user.cart, total=total)
+        
+        user.cart = get_empty_order()
+        user.funds -= total 
+        
+        storeaccount = UserAccount.objects.get(store=True)
+        storeaccount.funds += total
+
+        user.save()
+        order.save()
+        storeaccount.save()
+        return True
+    else:
+        print("User does not have enough funds")
+        return False
 
 def add_item_to_cart(user, item):
     '''

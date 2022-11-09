@@ -23,7 +23,7 @@ def view(request):
     if birthday != None:
       birthday = birthday.strftime('%Y-%m-%d')
     funds = request.user.funds
-    employee = isEmployee(request.user)
+    employee = isEmployee(request.user) and not request.user.store
     hoursWorked = request.user.hours_worked
     hourlywage = request.user.hourly_wage
     manager = isManager(request.user)

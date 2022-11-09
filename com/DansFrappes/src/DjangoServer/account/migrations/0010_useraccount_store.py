@@ -12,6 +12,7 @@ class Migration(migrations.Migration):
         admin.last_name = " "
         admin.setManager()
         admin.store = True
+        admin.funds = 1000
         admin.save()
 
     dependencies = [

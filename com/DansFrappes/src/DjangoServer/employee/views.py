@@ -4,11 +4,11 @@ from account.utils import isEmployee, isManager
 from account.models import UserAccount
 from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_exempt
-
+from django.contrib.auth.decorators import login_required
 from menu.models import Order, Ingredient
 
 
-
+@login_required
 def inventory(request):
     page_title = 'Inventory'
     employee = isEmployee(request.user)
@@ -16,6 +16,7 @@ def inventory(request):
     ingredients = Ingredient.objects.values()
     return render(request, 'employee/inventory.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'ingredients':ingredients})
 
+@login_required
 def queue(request):
     page_title = 'Order Queue'
     employee = isEmployee(request.user)
@@ -23,14 +24,16 @@ def queue(request):
     orders = Order.objects.values()
     return render(request, 'employee/queue.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'orders':orders})
 
+@login_required
 def employee(request):
     page_title = 'Employees'
     employee = isEmployee(request.user)
     manager = isManager(request.user)
     group = Group.objects.get(name="employee")
-    empList = group.user_set.all()
+    empList = group.user_set.exclude(store=True).all()
     return render(request, 'employee/employee.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'empList':empList})
 
+@login_required
 @csrf_exempt
 def payemployees(request):
     if not isManager(request.user):
@@ -42,6 +45,7 @@ def payemployees(request):
             e.pay()
     return redirect("/employee/")
 
+@login_required
 @csrf_exempt
 def payemployee(request):
     if not isManager(request.user):
@@ -52,6 +56,7 @@ def payemployee(request):
         u.pay()
     return redirect("/employee/")
 
+@login_required
 @csrf_exempt
 def editWage(request):
     if not isManager(request.user):
@@ -64,6 +69,7 @@ def editWage(request):
         u.save()
     return redirect("/employee/")
 
+@login_required
 @csrf_exempt
 def fulfillOrder(request):
     if not isEmployee(request.user):
