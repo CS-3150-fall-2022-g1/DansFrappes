@@ -18,7 +18,9 @@ def view_item(request, item):
   drink = get_object_or_404(DrinkPreset, name=item)
   milk_list = MilkIngredient.objects.all()
   toppings_list = Ingredient.objects.filter()
-  return render(request, 'menu/item.html', {'name':drink.name, 'drink':drink.order, 'milk_list':milk_list, 'toppings_list':toppings_list})
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
+  return render(request, 'menu/item.html', {'name':drink.name, 'drink':drink.order, 'milk_list':milk_list, 'toppings_list':toppings_list, 'employee':employee, 'manager':manager})
 
 @csrf_exempt
 @login_required
@@ -29,21 +31,22 @@ def add_to_cart(request):
     
     if add_item_to_cart(request.user, item):
       return redirect('/menu')
-    else:
-      return JsonResponse({'Error':True})
-  redirect("menu/cart/")
+  return redirect("/menu/cart/")
 
 @csrf_exempt
 @login_required
 def view_cart(request):
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
   if request.method == 'POST':
-    place_order(request.user)
-    print('HI!')
-    return redirect('/menu/confirm', )
-  return render(request, 'menu/cart.html', {'order':make_summary(request.user)}) 
+    confirm = place_order(request.user)
+    return render(request, 'menu/confirm.html', {'employee':employee, 'manager':manager, 'confirmed': confirm})
+  return render(request, 'menu/cart.html', {'order':make_summary(request.user), 'employee':employee, 'manager':manager}) 
 
 
 @login_required
 def view_confirm(request):
-  return render(request, 'menu/confirm.html')
+  employee = isEmployee(request.user)
+  manager = isManager(request.user)
+  return render(request, 'menu/confirm.html', {'employee':employee, 'manager':manager})
 # Create your views here.

@@ -19,7 +19,15 @@
                     <h3>{{ order.user.first_name }} {{ order.user.last_name }}</h3>
                 </th>
                 <th>
-                    <p>Drink: Name --EDIT THIS FIELD--</p>
+                    {% for drink in order.order.items %}
+                    <p>Drink: {{ drink.name }}</p>
+                    <p>Ingredients:</p>
+                    {% for key, value in drink.items %}
+                    {% if key != 'name' %}
+                    <p>{{ key }}: {{ value }}</p>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
                 <th>
                 <form method="post" action="/employee/fulfillorder/">
                     <input type="number" style="display: none;" value="{{ order.id }}" id="order_idx" name="order_idx">
