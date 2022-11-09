@@ -35,7 +35,6 @@
             </table>
         </div>
         <div class="right-column-inventory">
-            <form method="POST", action="">
                 <u><h1>Order</h1></u>
                 <h3>
                     Ingredient   x##
@@ -49,10 +48,9 @@
                 <h2>
                     Total:   x##
                 </h2>
-                <button class="action-button" style="background-color: #8F8F8F; color: white;">
+                <button class="action-button" onclick="buy('{{names}}')" style="background-color: #8F8F8F; color: white;">
                     Buy
                 </button>
-            </form>
         </div>
     </div>
     <script src="{% static 'employee/inventory.js' %}"></script>

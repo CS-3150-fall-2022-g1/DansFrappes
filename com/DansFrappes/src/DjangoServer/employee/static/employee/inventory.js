@@ -15,3 +15,19 @@ function subFromOrdering(name){
     }
     return count;
 }
+
+async function buy(names){
+    let nameList = names.split("^");
+    let counts = {};
+    nameList.forEach(name => {
+        let element = document.getElementById("icount" + name);
+        let count = Number.parseInt(element.textContent); 
+        counts[name] = count;
+    });
+
+    let post = new XMLHttpRequest();
+    post.open('POST', '/employee/buy/', true);
+    post.setRequestHeader('Content-Type', 'application/json');    
+    post.send(JSON.stringify(counts));
+    window.location.replace("/employee/buy/");
+}
