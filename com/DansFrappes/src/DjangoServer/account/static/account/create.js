@@ -71,5 +71,6 @@ button.id = 'loginbutton';
 button.className = "submitbutton";
 form_create.appendChild(button);
 
-
-
+const cancelLogin = document.createElement('p');
+cancelLogin.innerHTML = "Already Have an account? Login <a href='/account/login/'>Here!</a>";
+createAccountDiv.appendChild(cancelLogin);

@@ -59,7 +59,7 @@ bufferDiv.id = "bufferdiv";
 document.body.appendChild(bufferDiv);
 
 
-if ( employee == "True") {
+if ( employee == "True" || manager == "True" ) {
     var menuicon = new Image(35, 35);;
     menuicon.src = "/static/menu/menuIcon.png"
     menuicon.id = "menuimg";
