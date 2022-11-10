@@ -41,7 +41,7 @@ def place_order(user):
         
         user.cart = get_empty_order()
         user.save()
-        
+
         user.funds -= total 
         
         storeaccount = UserAccount.objects.get(store=True)
