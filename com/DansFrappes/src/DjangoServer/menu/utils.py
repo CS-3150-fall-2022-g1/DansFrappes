@@ -27,11 +27,16 @@ def place_order(user):
                     total += ingredient.buy_cost * other_markup * Decimal(value)
                 except:
                     print(key, value , "Not in Ingredient Database")
+    
     # Store account can order their own drink without paying for it
     if user == UserAccount.objects.get(store=True):
+        order = Order(user=user, order=user.cart, total=total)
+        user.cart = get_empty_order()
+        order.save()
+        user.save()
         return True
-
-    if user.funds > total:
+    # Everyone else Must pay for their drink
+    elif user.funds > total:
         order = Order(user=user, order=user.cart, total=total)
         
         user.cart = get_empty_order()
