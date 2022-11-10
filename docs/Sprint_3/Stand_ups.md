@@ -46,3 +46,25 @@
 
 ### Remaining tasks
 * Validate input and make sure it doesn't crash the server.
+
+## Standup 5
+* Spencer
+    * Finished creating the store account. Added money flow
+    * Will work on knocking out remaining small tasks
+* Jason
+    * Added cart receipt page
+    * Edit / remove cart, ingredient list
+* Josh
+    * Added cart receipt page, 
+    * Text alignment css
+* Reagan
+    * Buttons now add inventory
+    * Add text input, receipt populating
+
+### Remaining tasks
+* Align text better
+* Cancel create account
+* Edit remove / cart
+* Change ingredients to list
+* Auto populate inventory receipt
+* Add text input to inventory
