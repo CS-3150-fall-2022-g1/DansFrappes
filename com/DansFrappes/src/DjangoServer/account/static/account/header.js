@@ -1,3 +1,7 @@
+function sendToMenu() {
+    location.href = '/menu/';
+}
+
 
 const header = document.createElement("div");
 header.id = "headerDiv";
@@ -10,3 +14,5 @@ header.appendChild(h1_1);
 bufferDiv = document.createElement("div");
 bufferDiv.id = "bufferdiv";
 document.body.appendChild(bufferDiv);
+
+header.onclick = sendToMenu;
