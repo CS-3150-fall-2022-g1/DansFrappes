@@ -16,12 +16,15 @@
         <div class="itemDiv row">
             <table class="div-table">
                 <th>
-                    <h3>{{ order.user.first_name }} {{ order.user.last_name }}</h3>
+                    {% for u in users %}
+                    {% if u.id == order.user_id %}
+                    <h3 style="text-align: left;">{{ u.first_name }} {{ u.last_name }}</h3>
+                    {% endif %}
+                    {% endfor %}
                 </th>
                 <th>
                     {% for drink in order.order.items %}
-                    <p>Drink: {{ drink.name }}</p>
-                    <p>Ingredients:</p>
+                    <p style="text-align: left;">Drink: {{ drink.name }}</p>
                     {% for key, value in drink.items %}
                     {% if key != 'name' %}
                     <p>{{ key }}: {{ value }}</p>

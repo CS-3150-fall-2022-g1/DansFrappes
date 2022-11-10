@@ -24,8 +24,8 @@ def queue(request):
     employee = isEmployee(request.user)
     manager = isManager(request.user)
     orders = Order.objects.values()
-    print(orders)
-    return render(request, 'employee/queue.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'orders':orders})
+    users = UserAccount.objects.values()
+    return render(request, 'employee/queue.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'orders':orders, 'users': users})
 
 @login_required
 def employee(request):
