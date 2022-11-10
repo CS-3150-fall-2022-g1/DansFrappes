@@ -27,7 +27,7 @@
                     <p style="text-align: left;">Drink: {{ drink.name }}</p>
                     {% for key, value in drink.items %}
                     {% if key != 'name' %}
-                    <p>{{ key }}: {{ value }}</p>
+                    <p style="text-align: left;">&emsp;&emsp; {{ key }}: {{ value }}</p>
                     {% endif %}
                     {% endfor %}
                     {% endfor %}
