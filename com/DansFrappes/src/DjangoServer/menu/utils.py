@@ -8,6 +8,7 @@ other_markup = Decimal(1.6)
 def place_order(user):
     total = 0
 
+
     # Check for out of stock ingredients and calculate price
     # key is the name of the ingredient, value is the amount of the item
     
@@ -26,7 +27,10 @@ def place_order(user):
                     total += ingredient.buy_cost * other_markup * Decimal(value)
                 except:
                     print(key, value , "Not in Ingredient Database")
-    
+    # Store account can order their own drink without paying for it
+    if user == UserAccount.objects.get(store=True):
+        return True
+
     if user.funds > total:
         order = Order(user=user, order=user.cart, total=total)
         
