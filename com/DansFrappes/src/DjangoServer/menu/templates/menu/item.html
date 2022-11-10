@@ -18,58 +18,38 @@
                     <img src="/static/menu/Frappe-1.webp" width="455" height="455">
                 </div>
                 <div class="grid_item itemDiv">
-                    <div>
-                        <p>{{drink.description}}</p>
-                    </div>
-                    <div class="milk_row">
-                        <h2>Milk</h2>
-                        <select name="milk" id="milk-selector">
-                            {% for milk in milk_list%}
-                            <option>{{milk.name}}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="ingredient-section">
-                        <h2>Toppings</h2>
-                        <div id="ingredient-list">
+                    <form method="post" action="{% url 'cart_add' %}">
+                        <input class="hidden" name="name" value="{{name}}"></input>
+                        <div class="milk_row">
+                            <h2>Milk</h2>
+                            <select name="milk" id="milk-selector">
+                                {% for milk in milk_list%}
+                                <option>{{milk.name}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
-                        <select name="ingredient" id="ingredient-selector">
-                            {% for topping in toppings_list %}
-                            <option>{{topping.name}}</option>
-                            {% endfor %}
-                        </select>
-                        <span>qty</span>
-                        <input id="amount-selector" type="number" min="1" max="9" value="1">
-                    </div>
-                    <div>
-                        <button onclick="addIngredient()">+</button>
-                    </div>
-                    <div>
-                        <button onclick="addToCart()">Add to Cart</button>
-                    </div>
-                    
+                        <div class="ingredient-section">
+                            <h2>Ingredients</h2>
+                            <div id="ingredient-list">
+                                {% for ingredient in toppings_list %}
+                                    <div class="ingredient_row">
+                                        <span>{{ingredient.name}}</span>
+                                        <input type="number" min="0" max="9" value="0" name="{{ingredient.name}}" id="select_{{ingredient.name}}">
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div>
+                            <button type="submit">Add to Cart</button>
+                        </div>
+                    </form>
                     <script src="{% static 'menu/item_script.js' %}"></script>
                     {% for ingredient, amount in drink.items %}
-                    {% if ingredient != "milk" %}
+                    {% if ingredient != "milk" and ingredient != "description" and ingredient != "name"%}
                     <script>initIngredient("{{ingredient}}",{{amount}})</script>
                     {% endif %}
                     {% endfor %}
-                    <script>drawIngredients()</script>
                 </div>
-                <script>
-                    function addToCart() {
-                        ingredients['milk'] = milkSelector.value
-                        ingredients['name'] = "{{ name }}"
-                        fetch("{% url 'cart_add' %}", {
-                            method: "POST",
-                            redirect: "follow",
-                            headers: {'Content-Type': 'application/json'}, 
-                            body: JSON.stringify(ingredients)
-                        }).then(response => {
-                            window.location.href = response.url;
-                        })
-                    }
-                </script>
             </div>
         </body>
     </html>
