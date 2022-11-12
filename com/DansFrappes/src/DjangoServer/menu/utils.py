@@ -2,7 +2,7 @@ from account.models import UserAccount
 from .models import Ingredient, Order, DrinkPreset, MilkIngredient
 from decimal import Decimal
 
-milk_markup = Decimal(4)
+milk_markup = Decimal(11)
 other_markup = Decimal(1.6)
 
 def place_order(user):
@@ -40,6 +40,8 @@ def place_order(user):
         order = Order(user=user, order=user.cart, total=total)
         
         user.cart = get_empty_order()
+        user.save()
+
         user.funds -= total 
         
         storeaccount = UserAccount.objects.get(store=True)
@@ -60,6 +62,10 @@ def add_item_to_cart(user, item):
     '''
     if len(item) == 0:
         return False
+
+    for ingredient, amount in item.items():
+        print (ingredient, amount)
+    
     try:
         for ingredient, amount in item.items():
             if ingredient=="milk":
@@ -68,9 +74,8 @@ def add_item_to_cart(user, item):
                 pass
             else:
                 Ingredient.objects.get(name=ingredient)
-                if amount <= 0 or amount > 9:
-                    return False
-    except: 
+                item[ingredient] = max(1, min(amount, 9))
+    except:
         return False
 
     user.cart['items'].append(item)
