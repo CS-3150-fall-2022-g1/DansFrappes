@@ -265,3 +265,7 @@ border: none;
 th{
   width: 33%;
 }
+
+.clickable:hover {
+  cursor: pointer;
+}

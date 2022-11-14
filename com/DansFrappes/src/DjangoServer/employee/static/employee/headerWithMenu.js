@@ -24,6 +24,7 @@ useraccountimage.id = "uaimg";
 useraccountimage.style.position = "absolute";
 useraccountimage.style.left = "95%";
 useraccountimage.style.bottom = "5%";
+useraccountimage.classList.add("clickable")
 useraccountimage.onclick = function() {
     window.location.href = '/account/view/';
 };
@@ -37,6 +38,7 @@ homeicon.id = "menuimg";
 homeicon.style.position = "absolute";
 homeicon.style.left = "90%";
 homeicon.style.bottom = "5%";
+homeicon.classList.add("clickable")
 homeicon.onclick = function() {
     window.location.href = '/menu/';
 };
@@ -49,6 +51,7 @@ carticon.style.position = "absolute";
 carticon.id = "menuimg";
 carticon.style.left = "85%";
 carticon.style.bottom = "5%";
+carticon.classList.add("clickable")
 carticon.onclick = function() {
     window.location.href = '/menu/cart/';
 };
@@ -66,6 +69,7 @@ if ( employee == "True"  || manager == "True" ) {
     menuicon.style.position = "absolute";
     menuicon.style.left = "2%";
     menuicon.style.bottom = "5%";
+    menuicon.classList.add("clickable")
     menuicon.onclick = openNav;
     header.appendChild(menuicon);
 

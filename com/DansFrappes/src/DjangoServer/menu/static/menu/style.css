@@ -194,21 +194,27 @@ width: 40px;
   flex-direction: row;
 }
 
-#ingredient-template {
-  visibility: hidden;
+.grid_two_thirds {
+  flex-grow: 2;
 }
 
 .receipt {
-  background-color: #ffffff;
-  color: black;
+  background-color: #727D88;
+  color: white;
+  margin: 1% 0;
   font-size: 24px;
-  margin:10px;
-  height:25%;
+  border-radius: 8px;
+}
+
+.receiptArea {
+  padding: .75%;
 }
 
 .cost {
   text-align: right;
   margin-right: 10px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   font-family: monospace;
 }
 
@@ -233,4 +239,33 @@ ul {
 
 .receipt-ingredient {
   text-align: left;
+  padding-left: 2%;
+  margin-top: 0;
+}
+
+.ingredientList {
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.drinkTitle {
+  text-align: left;
+  padding-left: 2%;
+  padding-top: 2%;
+  margin-bottom: 0;
+  margin-top:0;
+}
+
+.styledButton {
+  background-color: #0A2136;
+  color: white;
+  border-radius:16px;
+  border-style: none;
+  width: 120px;
+  height: 50px;
+  font-size: 18px;
+}
+
+.clickable:hover {
+  cursor:pointer;
 }

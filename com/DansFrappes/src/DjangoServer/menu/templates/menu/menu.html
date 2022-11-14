@@ -17,7 +17,7 @@
 		<script src="{% static 'menu/script.js' %}"></script>
 		<div class="container">
 			{% for item in item_list %}
-			<div class="grid_item itemDiv" onclick="window.location.href = '{% url 'menu_item' item=item.name %}' ">
+			<div class="grid_item itemDiv clickable" onclick="window.location.href = '{% url 'menu_item' item=item.name %}' ">
 				<p>{{ item.name }}</p>
 				<img src="/static/menu/Frappe-1.webp" width="100" height="100" />
 			</div>

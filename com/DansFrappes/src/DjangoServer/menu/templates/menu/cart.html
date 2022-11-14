@@ -16,31 +16,32 @@
 		<script> h1_1.innerHTML = "Cart"</script>
 		<script src="{% static 'menu/script.js' %}"></script>
 		<div class="container">
-			<div class="grid_item itemDiv">
+			<div class="grid_item itemDiv grid_two_thirds">
 				<h1>Cart Summary</h1>
 			</div>
-			<div class="grid_item itemDiv">
+			<div class="grid_item itemDiv receiptArea">
 				{% for drink in order.items %}
 				<div class="receipt">
-					<p class="cost">{{ drink.name }}</p>
-					<ul>
+					<p class="drinkTitle">{{ drink.name }}</p>
+					<ul class="ingredientList">
 						{% for ingredients in drink.ingredients %}
 						<div class="container">
 							<div class="receipt-ingredient grid_item">
-								<p>{{ ingredients.name }}<p>
+								{{ ingredients.name }}
 							</div>
 							<div class="cost grid_item">
-								<p>${{ingredients.cost}}<p>
+								${{ingredients.cost}}
 							</div>
 						</div>
 						{% endfor %}
 					</ul>
-					<p class="total">Total: ${{ drink.total }}</p>
+					<p class="cost">-----</p>
+					<p class="cost">Total: ${{ drink.total }}</p>
 				</div>
 				{% endfor %}
-				<p class="total">Order Total: ${{ order.total }}</p>
+				<p class="cost">Order Total: ${{ order.total }}</p>
 			</div>
 		</div>
-		<form class="cart_button" method="post" action=""><button type="submit">Place Order</button></form>
+		<form class="cart_button" method="post" action=""><button type="submit" class="styledButton clickable">Place Order</button></form>
 	</body>
 </html>
