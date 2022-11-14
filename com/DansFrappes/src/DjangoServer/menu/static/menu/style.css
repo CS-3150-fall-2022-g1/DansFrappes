@@ -198,7 +198,7 @@ width: 40px;
   flex-grow: 2;
 }
 
-.receipt {
+.receiptItem {
   background-color: #727D88;
   color: white;
   margin: 1% 0;
@@ -208,6 +208,8 @@ width: 40px;
 
 .receiptArea {
   padding: .75%;
+  max-height: 400px;
+  overflow-y: scroll;
 }
 
 .cost {
@@ -216,14 +218,11 @@ width: 40px;
   margin-top: 3px;
   margin-bottom: 3px;
   font-family: monospace;
+  font-size: 18px;
 }
 
 .total {
-  text-align: right;
   font-size: 24px;
-  border-radius: 8px;
-  margin:10px;
-  height:25%;
 }
 
 ul {
@@ -234,10 +233,10 @@ ul {
   text-align: right;
   margin:10px;
   border-radius: 8px;
-  height:25%;
 }
 
 .receipt-ingredient {
+  font-size: 18px;
   text-align: left;
   padding-left: 2%;
   margin-top: 0;
@@ -259,13 +258,38 @@ ul {
 .styledButton {
   background-color: #0A2136;
   color: white;
-  border-radius:16px;
+  border-radius:1000px;
   border-style: none;
-  width: 120px;
-  height: 50px;
   font-size: 18px;
+  padding: 15px 30px;
+}
+
+.styledButton:hover {
+  background-color: #727D88;
 }
 
 .clickable:hover {
   cursor:pointer;
+}
+
+.menuContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.menuCard {
+  flex-basis: calc(33% - 40px);
+  min-width: 200px
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.autoMargin {
+  margin: auto;
 }
