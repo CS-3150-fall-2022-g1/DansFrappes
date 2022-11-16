@@ -293,3 +293,28 @@ input[type="submit"]:hover {
 .autoMargin {
   margin: auto;
 }
+
+.rightAlign {
+  text-align: right;
+  padding: 20px;
+}
+
+.centerAlign {
+  text-align: center;
+  padding: 20px;
+}
+
+.leftAlign {
+  text-align: left;
+}
+
+.addCart {
+  background: white;
+  color: black;
+  font-size: 24px;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-radius: 8px;
+  margin:1%;
+}
