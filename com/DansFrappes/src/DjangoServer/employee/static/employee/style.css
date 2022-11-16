@@ -265,3 +265,11 @@ border: none;
 th{
   width: 33%;
 }
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  cursor: pointer;
+}
