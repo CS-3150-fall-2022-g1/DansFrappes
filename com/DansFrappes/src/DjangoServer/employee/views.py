@@ -6,6 +6,7 @@ from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from menu.models import Order, Ingredient
+from decimal import Decimal
 import json
 
 
@@ -16,7 +17,17 @@ def inventory(request):
     manager = isManager(request.user)
     ingredients = Ingredient.objects.values()
     names = '^'.join([i['name'] for i in Ingredient.objects.values()])
-    return render(request, 'employee/inventory.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'ingredients':ingredients, 'names':names})
+    prices = json.dumps({i["name"]: str(i["buy_cost"]) for i in Ingredient.objects.values()})
+    balance = UserAccount.objects.filter(manager=True)[0].funds
+
+    return render(request, 'employee/inventory.html', 
+    {'page_title': page_title, 
+    'employee':employee, 
+    'manager':manager, 
+    'ingredients':ingredients, 
+    'names':names, 
+    'prices':prices,
+    'balance':balance})
 
 @login_required
 def queue(request):
@@ -90,9 +101,13 @@ def buy(request):
     # if not isEmployee(request.user):
     #     return redirect("/menu/")
     if request.method == 'POST':
-        for name,count in json.loads(request.body).items():
+        counts, bill = json.loads(request.body).items()
+        for name,count in counts[1].items():
             # print(name,count)
             e = Ingredient.objects.filter(name=name)[0]
             e.stock += count
             e.save()
+        manager = UserAccount.objects.filter(manager=True)[0]
+        manager.funds -= Decimal(bill[1])
+        manager.save()
     return redirect("/employee/inventory")
