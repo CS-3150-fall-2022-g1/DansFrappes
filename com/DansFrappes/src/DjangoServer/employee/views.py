@@ -16,7 +16,9 @@ def inventory(request):
     manager = isManager(request.user)
     ingredients = Ingredient.objects.values()
     names = '^'.join([i['name'] for i in Ingredient.objects.values()])
-    return render(request, 'employee/inventory.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'ingredients':ingredients, 'names':names})
+    prices = json.dumps({i["name"]: str(i["buy_cost"]) for i in Ingredient.objects.values()})
+    print(prices)
+    return render(request, 'employee/inventory.html', {'page_title': page_title, 'employee':employee, 'manager':manager, 'ingredients':ingredients, 'names':names, 'prices':prices})
 
 @login_required
 def queue(request):

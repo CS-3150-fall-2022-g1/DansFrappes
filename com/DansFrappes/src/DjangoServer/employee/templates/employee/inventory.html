@@ -19,10 +19,13 @@
                     <h2>Ingredient: {{ ingredient.name }}</h2>
                 </td>
                 <td>
+                    <h2>Cost: ${{ ingredient.buy_cost }}</h2>
+                </td>
+                <td>
                     <h2>Current: {{ ingredient.stock }}</h2>
                 </td>
                 <td>
-                    <h2>Order: <b id="icount{{ingredient.name}}">0</b></h2>
+                    <h2>Order: <input type="text" id="icount{{ ingredient.name }}" onchange="cleanUp('{{ ingredient.name }}')" name="count" value="0" style="border-style: none; font-size: x-large; font-weight: bold; width: 100px; color: #8F8F8F;">
                 </td>
                 <td style="text-align: right;">
                     <button class="add" onclick="addToOrdering('{{ingredient.name}}')">+</button>
@@ -36,17 +39,19 @@
         </div>
         <div class="right-column-inventory">
                 <u><h1>Order</h1></u>
-                <h3>
-                    Ingredient   x##
-                </h3>
-                <h3>
-                    Ingredient   x##
-                </h3>
-                <h3>
-                    Ingredient   x##
-                </h3>
-                <h2>
-                    Total:   x##
+                <div id="receipt">
+                    <!-- <h3>
+                        Ingredient   $##
+                    </h3>
+                    <h3>
+                        Ingredient   $##
+                    </h3>
+                    <h3>
+                        Ingredient   $##
+                    </h3> -->
+                </div>
+                <h2 id="total">
+                    Total:   $0.00
                 </h2>
                 <button class="action-button" onclick="buy('{{names}}')" style="background-color: #8F8F8F; color: white;">
                     Buy
@@ -54,4 +59,5 @@
         </div>
     </div>
     <script src="{% static 'employee/inventory.js' %}"></script>
+    <script>addPrices({{ prices|safe }})</script>
 </body>

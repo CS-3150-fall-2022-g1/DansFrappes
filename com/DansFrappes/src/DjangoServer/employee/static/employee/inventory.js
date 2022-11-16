@@ -1,19 +1,29 @@
-function addToOrdering(name) {
+var prices = {};
+
+function addPrices(data){
+    Object.keys(data).forEach(name => {
+        prices[name] = parseFloat(data[name]);
+    })
+}
+
+function addToOrdering(name){
     let element = document.getElementById("icount" + name);
-    let count = Number.parseInt(element.textContent) +1;
-    element.textContent = count;
-    return count;
+    let count = Number.parseInt(element.value) +1;
+    element.value = count;
+
+    makeReceipt(name);
 }
 
 function subFromOrdering(name){
     let element = document.getElementById("icount" + name);
-    let count = Number.parseInt(element.textContent); 
+    let count = Number.parseInt(element.value); 
     if(count == 0){
         return count;
     } else{
-        element.textContent = count - 1;
+        element.value = count - 1;
     }
-    return count;
+
+    makeReceipt(name);
 }
 
 async function buy(names){
@@ -21,8 +31,9 @@ async function buy(names){
     let counts = {};
     nameList.forEach(name => {
         let element = document.getElementById("icount" + name);
-        let count = Number.parseInt(element.textContent); 
+        let count = Number.parseInt(element.value); 
         counts[name] = count;
+        console.log("Buying: "+name+" with count: "+count)
     });
 
     let post = new XMLHttpRequest();
@@ -30,4 +41,57 @@ async function buy(names){
     post.setRequestHeader('Content-Type', 'application/json');    
     post.send(JSON.stringify(counts));
     window.location.replace("/employee/buy/");
+}
+
+function cleanUp(id){
+    let element = document.getElementById("icount" + id);
+    let clean = "";
+    for(let i = 0; i < element.value.length; i++){
+        if(!isNaN(parseInt(element.value[i]))){
+            clean += parseInt(element.value[i]);
+        }
+    }
+    if(clean.length === 0){
+        clean = "0";
+    }
+
+    let count = Number.parseInt(clean);
+    element.value = count;
+
+    makeReceipt(id);
+}
+
+function makeReceipt(name){
+    let ingField = document.getElementById("icount" + name);
+    let count = Number.parseInt(ingField.value); 
+    let price = (prices[name] * count).toFixed(2);
+    
+    let entry = document.getElementById("ordering" + name)
+    let receipt = document.getElementById("receipt");
+    if(!!entry){
+        entry.textContent = name + '   $' + price;
+    } else{
+        entry = document.createElement("h3");
+        entry.textContent = name + '   $' + price;
+        entry.id = "ordering" + name;
+        receipt.appendChild(entry);
+    }
+    
+    if(count == 0){
+        receipt.removeChild(entry);
+    }
+
+    let total = 0;
+    Object.keys(prices).forEach(name => {
+        base = parseFloat(prices[name]);
+        let ingField = document.getElementById("icount" + name);
+        let count = Number.parseInt(ingField.value); 
+
+        total += (count * base)
+    });
+
+    total = (total).toFixed(2)
+
+    let finalCost = document.getElementById("total");
+    finalCost.textContent = 'Total:   $' + total;
 }
