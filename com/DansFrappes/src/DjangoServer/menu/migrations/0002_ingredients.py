@@ -4,8 +4,8 @@ from menu.models import Ingredient, MilkIngredient
 def add_inventory(apps, schema_editor):
 
     ## Add-ins
-    carmel = Ingredient(name="Carmel", stock=1000, buy_cost=0.15)
-    carmel.save()
+    caramel = Ingredient(name="Caramel", stock=1000, buy_cost=0.15)
+    caramel.save()
     chocolate = Ingredient(name="Chocolate", stock=1000, buy_cost=0.15)
     chocolate.save()
     espresso = Ingredient(name="Espresso", stock=1000, buy_cost=0.15)

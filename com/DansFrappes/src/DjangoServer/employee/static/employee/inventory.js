@@ -26,21 +26,25 @@ function subFromOrdering(name){
     makeReceipt(name);
 }
 
-async function buy(names){
-    let nameList = names.split("^");
-    let counts = {};
-    nameList.forEach(name => {
-        let element = document.getElementById("icount" + name);
-        let count = Number.parseInt(element.value); 
-        counts[name] = count;
-        console.log("Buying: "+name+" with count: "+count)
-    });
+async function buy(balance, names){
+    let bill = parseFloat(calcTotal());
+    if(bill > balance){
+        alert("WARNING: Insufficient Funds")
+    }else{
+        let nameList = names.split("^");
+        let counts = {};
+        nameList.forEach(name => {
+            let element = document.getElementById("icount" + name);
+            let count = Number.parseInt(element.value); 
+            counts[name] = count;
+        });
 
-    let post = new XMLHttpRequest();
-    post.open('POST', '/employee/buy/', true);
-    post.setRequestHeader('Content-Type', 'application/json');    
-    post.send(JSON.stringify(counts));
-    window.location.replace("/employee/buy/");
+        let post = new XMLHttpRequest();
+        post.open('POST', '/employee/buy/', true);
+        post.setRequestHeader('Content-Type', 'application/json');    
+        post.send(JSON.stringify({'counts':counts,'bill':bill}));
+        window.location.replace("/employee/buy/");
+    }
 }
 
 function cleanUp(id){
@@ -59,6 +63,19 @@ function cleanUp(id){
     element.value = count;
 
     makeReceipt(id);
+}
+
+function calcTotal(){
+    let total = 0;
+    Object.keys(prices).forEach(name => {
+        base = parseFloat(prices[name]);
+        let ingField = document.getElementById("icount" + name);
+        let count = Number.parseInt(ingField.value); 
+
+        total += (count * base)
+    });
+
+    return total.toFixed(2)
 }
 
 function makeReceipt(name){
@@ -81,17 +98,7 @@ function makeReceipt(name){
         receipt.removeChild(entry);
     }
 
-    let total = 0;
-    Object.keys(prices).forEach(name => {
-        base = parseFloat(prices[name]);
-        let ingField = document.getElementById("icount" + name);
-        let count = Number.parseInt(ingField.value); 
-
-        total += (count * base)
-    });
-
-    total = (total).toFixed(2)
-
+    let total = calcTotal();
     let finalCost = document.getElementById("total");
     finalCost.textContent = 'Total:   $' + total;
 }
