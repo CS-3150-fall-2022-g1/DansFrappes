@@ -204,10 +204,11 @@ width: 40px;
   margin: 1% 0;
   font-size: 24px;
   border-radius: 8px;
+  overflow: hidden;
 }
 
 .receiptArea {
-  padding: .75%;
+  padding: 2%;
   max-height: 400px;
   overflow-y: scroll;
 }
@@ -292,4 +293,33 @@ input[type="submit"]:hover {
 
 .autoMargin {
   margin: auto;
+}
+
+.editArea {
+  text-align: left;
+  padding-left: 2%;
+}
+
+.itemBox {
+  background-color: #0A2136;
+  color: white;
+  font-size: 24px;
+  border-radius: 8px;
+  margin:10px;
+  text-align: center;
+}
+
+.iconHolder {
+  margin: 5px;
+  display:inline
+}
+
+.iconHolder:hover {
+  background-color: #727D88;
+  border-radius: 10px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
 }
