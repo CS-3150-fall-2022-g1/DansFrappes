@@ -16,32 +16,46 @@
 		<script> h1_1.innerHTML = "Cart"</script>
 		<script src="{% static 'menu/script.js' %}"></script>
 		<div class="container">
-			<div class="grid_item itemDiv grid_two_thirds">
-				<h2 class="autoMargin">Cart Summary</h2>
-			</div>
-			<div class="grid_item itemDiv">
-				<p class="drinkTitle">Drinks</p>
-				<div class="receiptArea">
-					{% for drink in order.items %}
-					<div class="receiptItem">
-						<p class="drinkTitle">{{ drink.name }}</p>
-						<ul class="ingredientList">
-							{% for ingredients in drink.ingredients %}
-							<div class="container">
-								<div class="receipt-ingredient grid_item">{{ ingredients.name }}</div>
-								<div class="cost grid_item">${{ ingredients.cost }}</div>
-							</div>
-							{% endfor %}
-						</ul>
-						<p class="cost">-----</p>
-						<p class="cost total">Total: ${{ drink.total }}</p>
-					</div>
-					
-					{% endfor %}
+			<div class="grid_item grid_two_thirds">
+				<div class="itemBox">
+					<h2 class="autoMargin">Cart Summary</h2>
 				</div>
-				<p class="cost total">Order Total: ${{ order.total }}</p>
+			</div>
+			<div class="grid_item">
+				<div class="itemBox">
+					<p class="drinkTitle">Drinks</p>
+					<div class="receiptArea">
+						{% for drink in order.items %}
+						<div class="receiptItem">
+							<p class="drinkTitle">{{ drink.name }}</p>
+							<ul class="ingredientList">
+								{% for ingredients in drink.ingredients %}
+								<div class="container">
+									<div class="receipt-ingredient grid_item">{{ ingredients.name }}</div>
+									<div class="cost grid_item">${{ ingredients.cost }}</div>
+								</div>
+								{% endfor %}
+							</ul>
+							<p class="cost">-----</p>
+							<div class="container">
+								<div class="grid_item">
+									<div class="editArea">
+										<a href="{% url 'cart_remove' forloop.counter0 %}" class="iconHolder clickable"><img class="icon" src="{% static 'menu/closeIcon.png' %}"></a>
+										<!-- <a href="/menu" class="iconHolder clickable"><img class="icon" src="{% static 'menu/editIcon.png' %}"></a> -->
+									</div>
+								</div>
+								<div class="grid_item">
+									<p class="cost total">Total: ${{ drink.total }}</p>
+								</div>
+							</div>
+						</div>
+
+						{% endfor %}
+					</div>
+					<p class="cost total">Order Total: ${{ order.total }}</p>
+				</div>
+				<form class="cart_button" method="post" action=""><button type="submit" class="styledButton clickable">Place Order</button></form>
 			</div>
 		</div>
-		<form class="cart_button" method="post" action=""><button type="submit" class="styledButton clickable">Place Order</button></form>
 	</body>
 </html>

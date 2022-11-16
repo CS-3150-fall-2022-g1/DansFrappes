@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
@@ -40,6 +41,13 @@ def add_to_cart(request):
     if add_item_to_cart(request.user, item):
       return redirect('/menu')
   return redirect("/menu")
+
+@login_required
+def remove_from_cart(request, index):
+  if len(request.user.cart.get('items')) > 0 and len(request.user.cart.get('items')) > index:
+    del request.user.cart.get('items')[index]
+    request.user.save()
+  return redirect(reverse('cart'))
 
 @csrf_exempt
 @login_required
