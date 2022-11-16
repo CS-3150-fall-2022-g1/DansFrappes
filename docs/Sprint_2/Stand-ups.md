@@ -1,3 +1,6 @@
+# Sprint 2 Stand-ups
+First item is what was worked on since last time. Second item is what will be done before next time. Third is any problems faced.
+
 ## Stand-up 1
 Jason
 1. Made new user model
