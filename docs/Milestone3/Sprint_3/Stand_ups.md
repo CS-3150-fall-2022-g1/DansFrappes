@@ -1,4 +1,4 @@
-# Sprint 3 standups
+# Sprint 3 Stand-ups
 
 ## Standup 1
 * Spencer
