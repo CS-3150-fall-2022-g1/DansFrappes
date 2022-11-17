@@ -1,10 +1,21 @@
-# DansFrappes
+DansFrappes
 
 ## Welcome
-This is Dan's Frappuccinos README.md file where you can learn all about how our system is configured, implemented, tested, and maintained. This website serve's as an all access club to order your favorite frapuccino.
+This is Dan's Frappuccinos README.md file where you can learn all about how our system is configured, implemented, tested, and maintained. This website serves as an all access club to order your favorite frapuccino.
 
 ## Deliverables
 ---
+### MILESTONE 3
+README.md -> /
+
+Sprint 1 -> /docs/Sprint_1/
+
+Sprint 2 -> /docs/Sprint_2/
+
+Sprint 3 -> /docs/Sprint_3/
+
+Server Setup Instructions -> /docs/
+
 ### MILESTONE 2
 README.md -> /
 
