@@ -35,6 +35,28 @@
                 </td>
                 </tr>
                 {% endfor %}
+                {% for milk in milkIngredients %}
+                <tr>
+                <td>
+                    <h2>Ingredient: {{ milk.name }}</h2>
+                </td>
+                <td>
+                    <h2>Cost: ${{ milk.buy_cost }}</h2>
+                </td>
+                <td>
+                    <h2>Current: {{ milk.stock }}</h2>
+                </td>
+                <td>
+                    <h2>Order: <input type="text" id="icount{{ milk.name }}" onchange="cleanUp('{{ milk.name }}')" name="count" value="0" style="border-style: none; font-size: x-large; font-weight: bold; width: 100px; color: #8F8F8F;">
+                </td>
+                <td style="text-align: right;">
+                    <button class="add" onclick="addToOrdering('{{milk.name}}')">+</button>
+                </td>
+                <td>
+                    <button class="subtract" onclick="subFromOrdering('{{milk.name}}')">-</button>
+                </td>
+                </tr>
+                {% endfor %}
             </table>
         </div>
         <div class="right-column-inventory">
