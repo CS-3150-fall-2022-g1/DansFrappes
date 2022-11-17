@@ -5,20 +5,6 @@ from decimal import Decimal
 milk_markup = Decimal(11)
 other_markup = Decimal(1.6)
 
-class Tests():
-
-    def checkOrder():
-        pass
-
-    def checkIngredients():
-        pass
-
-    def checkFunds():
-        pass
-    
-    pass
-
-
 def place_order(user):
     total = 0
 
@@ -35,13 +21,14 @@ def place_order(user):
                     total += ingredient.buy_cost * milk_markup
                 except:
                     print(key, value , "Not in Ingredient Database")
+            elif key == 'name':
+                continue
             else:
                 try:
                     ingredient = Ingredient.objects.get(name=key)
                     total += ingredient.buy_cost * other_markup * Decimal(value)
                 except:
                     print(key, value , "Not in Ingredient Database")
-    
     # Store account can order their own drink without paying for it
     if user == UserAccount.objects.get(store=True):
         order = Order(user=user, order=user.cart, total=total)
@@ -76,9 +63,6 @@ def add_item_to_cart(user, item):
     '''
     if len(item) == 0:
         return False
-
-    for ingredient, amount in item.items():
-        print (ingredient, amount)
     
     try:
         for ingredient, amount in item.items():
@@ -103,7 +87,7 @@ def get_menu():
     return DrinkPreset.objects.all()
 
 def get_unfulfilled():
-    return Order.objects.get(fulfilled=False).order_by('-time')
+    return Order.objects.all().filter(fulfilled=False).order_by('-time')
 
 def make_summary(user):
     summary = {'items':[]}
@@ -144,13 +128,11 @@ def make_item_summary(order):
             name = ingredient.name
 
         cost = round(cost, 2)
-        item['cost'] = cost
+        item['cost'] = cost * amount
         item['name'] = name
         item['amount'] = amount
         summary['ingredients'].append(item)
-        total += cost
+        total += cost * amount
 
     summary['total'] = total
     return [total, summary,]
-
-    

@@ -29,10 +29,10 @@
 						<div class="receiptItem">
 							<p class="drinkTitle">{{ drink.name }}</p>
 							<ul class="ingredientList">
-								{% for ingredients in drink.ingredients %}
+								{% for ingredient in drink.ingredients %}
 								<div class="container">
-									<div class="receipt-ingredient grid_item">{{ ingredients.name }}</div>
-									<div class="cost grid_item">${{ ingredients.cost }}</div>
+									<div class="receipt-ingredient grid_item">{{ ingredient.name }} x {{ingredient.amount}}</div>
+									<div class="cost grid_item">${{ ingredient.cost }}</div>
 								</div>
 								{% endfor %}
 							</ul>
