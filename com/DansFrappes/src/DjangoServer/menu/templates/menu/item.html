@@ -17,30 +17,30 @@
                 <div class="grid_item itemDiv">
                     <img src="/static/menu/Frappe-1.webp" width="455" height="455">
                 </div>
-                <div class="grid_item itemDiv">
+                <div class="grid_item itemDiv rightAlign">
                     <form method="post" action="{% url 'cart_add' %}">
-                        <input class="hidden" name="name" value="{{name}}"></input>
+                        <h1 name="name" class="centerAlign">{{ name }}</h1>
                         <div class="milk_row">
-                            <h2>Milk</h2>
+                            <h2 class="leftAlign">Milk</h2>
                             <select name="milk" id="milk-selector">
                                 {% for milk in milk_list%}
-                                <option>{{milk.name}}</option>
+                                <option class="rightAlign">{{milk.name}}</option>
                                 {% endfor %}
                             </select>
                         </div>
                         <div class="ingredient-section">
-                            <h2>Ingredients</h2>
+                            <h2 class="leftAlign">Ingredients</h2>
                             <div id="ingredient-list">
                                 {% for ingredient in toppings_list %}
                                     <div class="ingredient_row">
-                                        <span>{{ingredient.name}}</span>
+                                        <span class="rightAlign">{{ingredient.name}}</span>
                                         <input type="number" min="0" max="9" value="0" name="{{ingredient.name}}" id="select_{{ingredient.name}}">
                                     </div>
                                 {% endfor %}
                             </div>
                         </div>
                         <div>
-                            <button type="submit">Add to Cart</button>
+                            <button type="submit" class="addCart">Add to Cart</button>
                         </div>
                     </form>
                     <script src="{% static 'menu/item_script.js' %}"></script>

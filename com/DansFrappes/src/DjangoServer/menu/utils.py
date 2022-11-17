@@ -5,6 +5,20 @@ from decimal import Decimal
 milk_markup = Decimal(11)
 other_markup = Decimal(1.6)
 
+class Tests():
+
+    def checkOrder():
+        pass
+
+    def checkIngredients():
+        pass
+
+    def checkFunds():
+        pass
+    
+    pass
+
+
 def place_order(user):
     total = 0
 
@@ -138,3 +152,5 @@ def make_item_summary(order):
 
     summary['total'] = total
     return [total, summary,]
+
+    
