@@ -59,7 +59,6 @@ def view_cart(request):
     return render(request, 'menu/confirm.html', {'employee':employee, 'manager':manager, 'confirmed': confirm})
   return render(request, 'menu/cart.html', {'order':make_summary(request.user), 'employee':employee, 'manager':manager}) 
 
-
 @login_required
 def view_confirm(request):
   employee = isEmployee(request.user)
