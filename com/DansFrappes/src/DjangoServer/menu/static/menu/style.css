@@ -322,6 +322,7 @@ input[type="submit"]:hover {
 .icon {
   width: 24px;
   height: 24px;
+}
 
 .rightAlign {
   text-align: right;
