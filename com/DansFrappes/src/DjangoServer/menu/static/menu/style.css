@@ -207,6 +207,10 @@ width: 40px;
   overflow: hidden;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .receiptArea {
   padding: 2%;
   max-height: 400px;
