@@ -1,0 +1,31 @@
+Instructions for running server:
+
+1. Open your terminal
+
+You will need to have Django downloaded to your machine. Run this command:
+
+"python -m pip install Django (if on a mac, run python3 instead)"
+
+if you do not have python you will need to download that as well: 
+
+https://www.python.org/downloads/windows/
+
+2. Next you will need to download our project. I suggest creating a repo from our github: 
+
+"git clone https://github.com/CS-3450-fall-2022-g1/DansFrappes.git"
+
+Then you will cd into our Django Server Directory
+
+"cd .../DansFrappes/com/DansFrappes/src/DjangoServer"
+
+3. From here you can run the following command to have a database:
+
+"python manage.py migrate"
+
+4. Then you can run the server with the following commands
+
+"python manage.py runserver" (again, if on a mac, run python3 instead)
+
+This will open a server display on your terminal with an https link to what
+is your local host. Copy that link into your desired browser and go to the link
+
