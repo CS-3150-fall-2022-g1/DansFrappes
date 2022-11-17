@@ -5,7 +5,7 @@ from account.models import UserAccount
 from django.contrib.auth.models import Group
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from menu.models import Order, Ingredient
+from menu.models import Order, Ingredient, MilkIngredient
 from decimal import Decimal
 import json
 
@@ -16,16 +16,23 @@ def inventory(request):
     employee = isEmployee(request.user)
     manager = isManager(request.user)
     ingredients = Ingredient.objects.values()
+    milkIngredients = MilkIngredient.objects.values()
     names = '^'.join([i['name'] for i in Ingredient.objects.values()])
-    prices = json.dumps({i["name"]: str(i["buy_cost"]) for i in Ingredient.objects.values()})
-    balance = UserAccount.objects.filter(manager=True)[0].funds
+    milkNames = '^'.join([i['name'] for i in MilkIngredient.objects.values()])
+    names += '^' + milkNames
+    print(names)
+    prices = json.dumps({i["name"]: str(i["buy_cost"]) 
+        for i in list(Ingredient.objects.values()) + list(MilkIngredient.objects.values())})
+    balance = UserAccount.objects.filter(store=True)[0].funds
 
     return render(request, 'employee/inventory.html', 
     {'page_title': page_title, 
     'employee':employee, 
     'manager':manager, 
-    'ingredients':ingredients, 
-    'names':names, 
+    'ingredients':ingredients,
+    'milkIngredients':milkIngredients, 
+    'names':names,
+    'milkNames':milkNames, 
     'prices':prices,
     'balance':balance})
 
@@ -104,7 +111,11 @@ def buy(request):
         counts, bill = json.loads(request.body).items()
         for name,count in counts[1].items():
             # print(name,count)
-            e = Ingredient.objects.filter(name=name)[0]
+            e = Ingredient.objects.filter(name=name)
+            if(len(e) > 0):
+                e = e[0]
+            else:   
+                e = MilkIngredient.objects.filter(name = name)[0]
             e.stock += count
             e.save()
         manager = UserAccount.objects.filter(manager=True)[0]
