@@ -15,14 +15,22 @@ Josh
 Reagan
 1. Working on Jira
 2. Finish that, work on inventory front end
-3. 
+3. Figuring out Jira
 
 Spencer
 1. CSS and Javascript for login, account and homepage
 2. Finish CSS Javascript, start on side menu
 3. Took a while to get all the things working together
 
-## Stand-up 2 (10/28/22)
+## Stand-up 2 (10/24/22)
+Meeting with Dan
+
+Everyone
+1. Spencer's and Jason's stuff and Jira
+2. Individual tasks
+3. Put more time into this class
+
+## Stand-up 3 (10/28/22)
 Jason
 1. Functions for adding items to the cart and placing orders
 2. Work on Django template for menu

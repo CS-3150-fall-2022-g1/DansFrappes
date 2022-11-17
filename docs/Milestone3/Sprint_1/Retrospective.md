@@ -1,5 +1,8 @@
 # Sprint 1 Retrospective
 
+Scrum Master: Josh
+
+Present at Retrospective: Josh, Jason, Reagan, Spencer
 ## What worked well?
 1. We had a great planning meeting at the start of the sprint to divide and plan tasks.
 2. When we realized we had an issue, we were able to change direction to benefit the whole team.
@@ -12,3 +15,10 @@
 1. We will hold Scrum meetings more often so we know what needs to be done and are more accountable.
     * We will also take notes
 2. We will work on making steady progress rather than rushing to make progress at the end.
+
+
+## Workload breakdown
+Spencer - 30%
+Reagan - 10%
+Jason- 30%
+Josh - 30%

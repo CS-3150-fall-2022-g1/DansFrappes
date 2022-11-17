@@ -1,7 +1,8 @@
 # Retrospective
 
-Scrumm master: Jason Crandall
+Scrum master: Jason Crandall
 
+Present at Retrospective: Josh, Jason, Reagan, Spencer
 ## What went well?
 We had a new strategy for breaking up tasks that helped us know what to do.
 
