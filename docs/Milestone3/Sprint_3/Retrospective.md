@@ -2,6 +2,7 @@
 
 SCRUM Master - Reagan
 
+Present at Retrospective: Josh, Jason, Reagan, Spencer
 ## What went well?
 * We were on top of things, productive, and had time to finish things
 * Made working systems instead of half-done systems

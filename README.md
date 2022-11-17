@@ -1,10 +1,24 @@
 # DansFrappes
 
 ## Welcome
-This is Dan's Frappuccinos README.md file where you can learn all about how our system is configured, implemented, tested, and maintained. This website serve's as an all access club to order your favorite frapuccino.
+This is Dan's Frappuccinos README.md file where you can learn all about how our system is configured, implemented, tested, and maintained. This website serves as an all access club to order your favorite frapuccino.
 
 ## Deliverables
 ---
+### MILESTONE 3
+README.md -> /
+
+Sprint 1 -> /docs/Milestone3/Sprint_1/
+Note: Stand-up reports have been compiled into one document. Seperate reports are differentiated by the dates they occured.
+
+Sprint 2 -> /docs/Milestone3/Sprint_2/
+Note: Stand-up reports have been compiled into one document. Seperate reports are differentiated by the dates they occured.
+
+Sprint 3 -> /docs/Milestone3/Sprint_3/
+Note: Stand-up reports have been compiled into one document. Seperate reports are differentiated by the dates they occured.
+
+Server Setup Instructions -> /docs/
+
 ### MILESTONE 2
 README.md -> /
 
