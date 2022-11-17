@@ -19,6 +19,8 @@ Note: Stand-up reports have been compiled into one document. Seperate reports ar
 
 Server Setup Instructions -> /docs/
 
+Unit Testing Instructions -> /docs/
+
 ### MILESTONE 2
 README.md -> /
 
