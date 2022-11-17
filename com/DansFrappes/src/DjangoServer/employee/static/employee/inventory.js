@@ -26,7 +26,7 @@ function subFromOrdering(name){
     makeReceipt(name);
 }
 
-async function buy(balance, names){
+function buy(balance, names){
     let bill = parseFloat(calcTotal());
     if(bill > balance){
         alert("WARNING: Insufficient Funds")
@@ -41,9 +41,12 @@ async function buy(balance, names){
 
         let post = new XMLHttpRequest();
         post.open('POST', '/employee/buy/', true);
-        post.setRequestHeader('Content-Type', 'application/json');    
+        post.setRequestHeader('Content-Type', 'application/json');  
+        post.onreadystatechange = function () {
+            if (post.readyState === 4) {
+            window.location.replace("/employee/buy/");
+            }};  
         post.send(JSON.stringify({'counts':counts,'bill':bill}));
-        window.location.replace("/employee/buy/");
     }
 }
 
