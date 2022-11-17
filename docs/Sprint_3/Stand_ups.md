@@ -1,3 +1,20 @@
+# Sprint 3 standups
+
+## Standup 1
+* Spencer
+    * Work on account pages
+    * Finish employee and manager accounts
+    * Waiting for order history
+* Reagan
+    * Front end for employees and queue, almost done with queue
+    * Front end for inventory
+* Spencer 
+    * Finish front end for placing orders
+    * Very busy
+* Jason
+    * Finish backend for placing orders and helper method for order history, model for preset drink
+    * Very busy
+
 ## Standup 2
 * Josh 
     * Menu progress
@@ -68,3 +85,20 @@
 * Change ingredients to list
 * Auto populate inventory receipt
 * Add text input to inventory
+
+## Standup 6
+* Jason
+    * Make edit page list ingredients, CSS for menu, cart, and clickables
+    * Finish edit / remove from cart
+    * 
+* Josh
+    * Working inventory css
+* Spencer
+    * Cancel create account, other small tasks
+* Reagan
+    * Text fields for inventory, populated cost column, worked on invenoty receipts.
+    * Make money remove from store account
+
+### Remaining tasks
+* Edit / remove from cart
+* Finalize documentation
