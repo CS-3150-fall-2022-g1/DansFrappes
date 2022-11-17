@@ -8,11 +8,11 @@ This is Dan's Frappuccinos README.md file where you can learn all about how our 
 ### MILESTONE 3
 README.md -> /
 
-Sprint 1 -> /docs/Sprint_1/
+Sprint 1 -> /docs/Milestone3/Sprint_1/
 
-Sprint 2 -> /docs/Sprint_2/
+Sprint 2 -> /docs/Milestone3/Sprint_2/
 
-Sprint 3 -> /docs/Sprint_3/
+Sprint 3 -> /docs/Milestone3/Sprint_3/
 
 Server Setup Instructions -> /docs/
 
