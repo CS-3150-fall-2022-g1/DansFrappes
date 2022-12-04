@@ -5,6 +5,14 @@ This is Dan's Frappuccinos README.md file where you can learn all about how our 
 
 ## Deliverables
 ---
+### MILESTONE 4
+
+Presentation included in the Git repo
+
+Deployed application -> `$ python manage.py runserver` to start the webserver.
+
+---
+
 ### MILESTONE 3
 README.md -> /
 
