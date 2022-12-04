@@ -15,6 +15,16 @@ class Migration(migrations.Migration):
         admin.funds = 1000
         admin.save()
 
+    def add_emp(apps, schema_editor):
+        emp = UserAccount.objects.create_user("demoemp", "demoemp@gmail.com", "password")
+        emp.first_name = "demo"
+        emp.last_name = "emp"
+        emp.setEmployee()
+        emp.store = False
+        emp.funds = 50
+        emp.save()
+
+
     dependencies = [
         ('account', '0009_alter_useraccount_funds_and_more'),
     ]
@@ -26,4 +36,5 @@ class Migration(migrations.Migration):
             field=models.BooleanField(default=False),
         ),
         migrations.RunPython(add_admin),
+        migrations.RunPython(add_emp),
     ]
