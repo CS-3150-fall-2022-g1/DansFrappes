@@ -11,6 +11,20 @@ Presentation included in the Git repo
 
 Deployed application -> `$ python manage.py runserver` to start the webserver.
 
+Default User Logins: 
+
+    - Store Account: 
+        Username: admin 
+        Password: password 
+
+    - Demo Employee: 
+        Username: demoemp 
+        Password: password 
+
+     -Demo Customer: 
+        Username: democustomer 
+        Password: password 
+
 ---
 
 ### MILESTONE 3

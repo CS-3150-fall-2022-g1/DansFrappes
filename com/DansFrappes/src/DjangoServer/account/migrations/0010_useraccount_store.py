@@ -24,6 +24,15 @@ class Migration(migrations.Migration):
         emp.funds = 50
         emp.save()
 
+    def add_cust(apps, schema_editor):
+        cust = UserAccount.objects.create_user("democustomer", "democustomer@gmail.com", "password")
+        cust.first_name = "demo"
+        cust.last_name = "customer"
+        cust.setCustomer()
+        cust.store = False
+        cust.funds = 50
+        cust.save()
+
 
     dependencies = [
         ('account', '0009_alter_useraccount_funds_and_more'),
@@ -37,4 +46,5 @@ class Migration(migrations.Migration):
         ),
         migrations.RunPython(add_admin),
         migrations.RunPython(add_emp),
+        migrations.RunPython(add_cust),
     ]
