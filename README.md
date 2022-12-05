@@ -5,6 +5,28 @@ This is Dan's Frappuccinos README.md file where you can learn all about how our 
 
 ## Deliverables
 ---
+### MILESTONE 4
+
+Presentation included in the Git repo-> docs/PowerPoint/
+
+Deployed application -> `$ python manage.py runserver` to start the webserver.
+
+Default User Logins: 
+
+    - Store Account: 
+        Username: admin 
+        Password: password 
+
+    - Demo Employee: 
+        Username: demoemp 
+        Password: password 
+
+     -Demo Customer: 
+        Username: democustomer 
+        Password: password 
+
+---
+
 ### MILESTONE 3
 README.md -> /
 
