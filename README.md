@@ -7,7 +7,7 @@ This is Dan's Frappuccinos README.md file where you can learn all about how our 
 ---
 ### MILESTONE 4
 
-Presentation included in the Git repo
+Presentation included in the Git repo-> docs/PowerPoint/
 
 Deployed application -> `$ python manage.py runserver` to start the webserver.
 
