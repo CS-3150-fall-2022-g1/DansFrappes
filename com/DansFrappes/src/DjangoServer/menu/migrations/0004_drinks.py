@@ -15,13 +15,14 @@ def add_drinks(apps, schema_editor):
         'name':'The Jason',
         'description':'TODO',
         'Chocolate':2,
-        'milk':"Whole"
+        'Peppermint': 7,
+        'milk':"Oat"
     })
     drink2.save()
     drink3= DrinkPreset(name='The Spencer', order={
         'name':'The Spencer',
         'description':'TODO',
-        'Chocolate':2,
+        'Chocolate':9,
         'milk':"Whole"
     })
     drink3.save()
@@ -36,14 +37,15 @@ def add_drinks(apps, schema_editor):
     drink5= DrinkPreset(name='The Dan', order={
         'name':'The Dan',
         'description':'TODO',
-        'Chocolate':2,
-        'milk':"Whole"
+        'Chocolate':3,
+        'Matcha': 4,
+        'milk':"Skim"
     })
     drink5.save()
     drink6= DrinkPreset(name='The Andrew', order={
         'name':'The Andrew',
         'description':'TODO',
-        'Chocolate':2,
+        'Chocolate':1,
         'milk':"Whole"
     })
     drink6.save()
