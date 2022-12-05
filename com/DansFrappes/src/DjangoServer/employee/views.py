@@ -99,6 +99,20 @@ def fulfillOrder(request):
         orderid = int(request.POST.get("order_idx"))
         order = Order.objects.get(pk=orderid)
         order.fulfilled = True
+
+        for drink in order.order.get('items'):
+            for ingredient, amount in drink.items():
+                if ingredient=="milk":
+                    ing = MilkIngredient.objects.get(name=amount)
+                    ing.stock -= 1
+                    ing.save()
+                elif ingredient=="name":
+                    pass
+                else:
+                    ing = Ingredient.objects.get(name=ingredient)
+                    ing.stock -= amount
+                    ing.save()
+
         order.save()
     return redirect("/employee/queue/")
 
